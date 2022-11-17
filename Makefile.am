@@ -4,8 +4,8 @@ SUBDIRS = src po
 
 EXTRA_DIST = \
 	autogen.sh \
-	projet-c-.glade \
-	projet-c-.gladep
+	projet.glade \
+	projet.gladep
 
 install-data-local:
 	@$(NORMAL_INSTALL)

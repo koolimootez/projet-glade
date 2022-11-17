@@ -33,17 +33,18 @@ create_connexion (void)
   GtkWidget *fixed72;
   GtkWidget *identifiant_entry;
   GtkWidget *mot_de_passe_entry;
-  GtkWidget *label789;
   GtkWidget *label790;
-  GtkWidget *image217;
   GtkWidget *label791;
   GtkWidget *label788;
-  GtkWidget *label792;
+  GtkWidget *label789;
+  GtkWidget *image217;
+  GtkWidget *message_label;
   GtkWidget *se_connecter_button;
   GtkWidget *alignment193;
   GtkWidget *hbox193;
   GtkWidget *image218;
   GtkWidget *label793;
+  GtkWidget *label1227;
 
   connexion = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (connexion), _("connexion "));
@@ -54,30 +55,20 @@ create_connexion (void)
 
   identifiant_entry = gtk_entry_new ();
   gtk_widget_show (identifiant_entry);
-  gtk_fixed_put (GTK_FIXED (fixed72), identifiant_entry, 24, 160);
+  gtk_fixed_put (GTK_FIXED (fixed72), identifiant_entry, 24, 176);
   gtk_widget_set_size_request (identifiant_entry, 448, 32);
   gtk_entry_set_invisible_char (GTK_ENTRY (identifiant_entry), 8226);
 
   mot_de_passe_entry = gtk_entry_new ();
   gtk_widget_show (mot_de_passe_entry);
-  gtk_fixed_put (GTK_FIXED (fixed72), mot_de_passe_entry, 24, 216);
+  gtk_fixed_put (GTK_FIXED (fixed72), mot_de_passe_entry, 24, 232);
   gtk_widget_set_size_request (mot_de_passe_entry, 448, 32);
   gtk_entry_set_invisible_char (GTK_ENTRY (mot_de_passe_entry), 8226);
-
-  label789 = gtk_label_new (_("identifiant"));
-  gtk_widget_show (label789);
-  gtk_fixed_put (GTK_FIXED (fixed72), label789, 0, 128);
-  gtk_widget_set_size_request (label789, 144, 32);
 
   label790 = gtk_label_new (_("connexion"));
   gtk_widget_show (label790);
   gtk_fixed_put (GTK_FIXED (fixed72), label790, 168, 296);
   gtk_widget_set_size_request (label790, 80, 16);
-
-  image217 = create_pixmap (connexion, "index.png");
-  gtk_widget_show (image217);
-  gtk_fixed_put (GTK_FIXED (fixed72), image217, 176, 16);
-  gtk_widget_set_size_request (image217, 128, 104);
 
   label791 = gtk_label_new (_("je n'ai encore un compte "));
   gtk_widget_show (label791);
@@ -86,18 +77,29 @@ create_connexion (void)
 
   label788 = gtk_label_new (_("mot de passe  "));
   gtk_widget_show (label788);
-  gtk_fixed_put (GTK_FIXED (fixed72), label788, 24, 192);
+  gtk_fixed_put (GTK_FIXED (fixed72), label788, 24, 216);
   gtk_widget_set_size_request (label788, 120, 16);
 
-  label792 = gtk_label_new_with_mnemonic (_("Mot de passe oubli\303\251"));
-  gtk_widget_show (label792);
-  gtk_fixed_put (GTK_FIXED (fixed72), label792, 24, 248);
-  gtk_widget_set_size_request (label792, 152, 32);
+  label789 = gtk_label_new (_("identifiant"));
+  gtk_widget_show (label789);
+  gtk_fixed_put (GTK_FIXED (fixed72), label789, 24, 160);
+  gtk_widget_set_size_request (label789, 120, 16);
+
+  image217 = create_pixmap (connexion, "index.png");
+  gtk_widget_show (image217);
+  gtk_fixed_put (GTK_FIXED (fixed72), image217, 176, 16);
+  gtk_widget_set_size_request (image217, 128, 104);
+
+  message_label = gtk_label_new ("");
+  gtk_widget_show (message_label);
+  gtk_fixed_put (GTK_FIXED (fixed72), message_label, 80, 128);
+  gtk_widget_set_size_request (message_label, 320, 24);
 
   se_connecter_button = gtk_button_new ();
   gtk_widget_show (se_connecter_button);
   gtk_fixed_put (GTK_FIXED (fixed72), se_connecter_button, 168, 296);
-  gtk_widget_set_size_request (se_connecter_button, 176, 40);
+  gtk_widget_set_size_request (se_connecter_button, 168, 40);
+  GTK_WIDGET_SET_FLAGS (se_connecter_button, GTK_CAN_DEFAULT);
 
   alignment193 = gtk_alignment_new (0.5, 0.5, 0, 0);
   gtk_widget_show (alignment193);
@@ -115,6 +117,11 @@ create_connexion (void)
   gtk_widget_show (label793);
   gtk_box_pack_start (GTK_BOX (hbox193), label793, FALSE, FALSE, 0);
 
+  label1227 = gtk_label_new (_("Mot de passe oubli\303\251"));
+  gtk_widget_show (label1227);
+  gtk_fixed_put (GTK_FIXED (fixed72), label1227, 16, 272);
+  gtk_widget_set_size_request (label1227, 182, 17);
+
   g_signal_connect ((gpointer) se_connecter_button, "clicked",
                     G_CALLBACK (on_se_connecter_button_clicked),
                     NULL);
@@ -124,17 +131,18 @@ create_connexion (void)
   GLADE_HOOKUP_OBJECT (connexion, fixed72, "fixed72");
   GLADE_HOOKUP_OBJECT (connexion, identifiant_entry, "identifiant_entry");
   GLADE_HOOKUP_OBJECT (connexion, mot_de_passe_entry, "mot_de_passe_entry");
-  GLADE_HOOKUP_OBJECT (connexion, label789, "label789");
   GLADE_HOOKUP_OBJECT (connexion, label790, "label790");
-  GLADE_HOOKUP_OBJECT (connexion, image217, "image217");
   GLADE_HOOKUP_OBJECT (connexion, label791, "label791");
   GLADE_HOOKUP_OBJECT (connexion, label788, "label788");
-  GLADE_HOOKUP_OBJECT (connexion, label792, "label792");
+  GLADE_HOOKUP_OBJECT (connexion, label789, "label789");
+  GLADE_HOOKUP_OBJECT (connexion, image217, "image217");
+  GLADE_HOOKUP_OBJECT (connexion, message_label, "message_label");
   GLADE_HOOKUP_OBJECT (connexion, se_connecter_button, "se_connecter_button");
   GLADE_HOOKUP_OBJECT (connexion, alignment193, "alignment193");
   GLADE_HOOKUP_OBJECT (connexion, hbox193, "hbox193");
   GLADE_HOOKUP_OBJECT (connexion, image218, "image218");
   GLADE_HOOKUP_OBJECT (connexion, label793, "label793");
+  GLADE_HOOKUP_OBJECT (connexion, label1227, "label1227");
 
   return connexion;
 }
@@ -167,12 +175,12 @@ create_inscription (void)
   GtkWidget *label807;
   GtkWidget *label808;
   GtkWidget *label798;
-  GtkObject *date_naissance_jour_button_adj;
-  GtkWidget *date_naissance_jour_button;
-  GtkObject *date_naissance_mois_button_adj;
-  GtkWidget *date_naissance_mois_button;
-  GtkObject *date_naissance_annee_button_adj;
-  GtkWidget *date_naissance_annee_button;
+  GtkObject *date_de_naissance_jour_button_adj;
+  GtkWidget *date_de_naissance_jour_button;
+  GtkObject *date_de_naissance_mois_button_adj;
+  GtkWidget *date_de_naissance_mois_button;
+  GtkObject *date_de_naissance_annee_button_adj;
+  GtkWidget *date_de_naissance_annee_button;
   GtkWidget *label796;
   GtkWidget *label800;
   GtkWidget *label799;
@@ -319,23 +327,23 @@ create_inscription (void)
   gtk_fixed_put (GTK_FIXED (fixed73), label798, 0, 368);
   gtk_widget_set_size_request (label798, 80, 24);
 
-  date_naissance_jour_button_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
-  date_naissance_jour_button = gtk_spin_button_new (GTK_ADJUSTMENT (date_naissance_jour_button_adj), 1, 0);
-  gtk_widget_show (date_naissance_jour_button);
-  gtk_fixed_put (GTK_FIXED (fixed73), date_naissance_jour_button, 16, 320);
-  gtk_widget_set_size_request (date_naissance_jour_button, 60, 30);
+  date_de_naissance_jour_button_adj = gtk_adjustment_new (1, 1, 31, 1, 10, 10);
+  date_de_naissance_jour_button = gtk_spin_button_new (GTK_ADJUSTMENT (date_de_naissance_jour_button_adj), 1, 0);
+  gtk_widget_show (date_de_naissance_jour_button);
+  gtk_fixed_put (GTK_FIXED (fixed73), date_de_naissance_jour_button, 16, 320);
+  gtk_widget_set_size_request (date_de_naissance_jour_button, 60, 30);
 
-  date_naissance_mois_button_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
-  date_naissance_mois_button = gtk_spin_button_new (GTK_ADJUSTMENT (date_naissance_mois_button_adj), 1, 0);
-  gtk_widget_show (date_naissance_mois_button);
-  gtk_fixed_put (GTK_FIXED (fixed73), date_naissance_mois_button, 80, 320);
-  gtk_widget_set_size_request (date_naissance_mois_button, 60, 30);
+  date_de_naissance_mois_button_adj = gtk_adjustment_new (1, 1, 12, 1, 10, 10);
+  date_de_naissance_mois_button = gtk_spin_button_new (GTK_ADJUSTMENT (date_de_naissance_mois_button_adj), 1, 0);
+  gtk_widget_show (date_de_naissance_mois_button);
+  gtk_fixed_put (GTK_FIXED (fixed73), date_de_naissance_mois_button, 80, 320);
+  gtk_widget_set_size_request (date_de_naissance_mois_button, 60, 30);
 
-  date_naissance_annee_button_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
-  date_naissance_annee_button = gtk_spin_button_new (GTK_ADJUSTMENT (date_naissance_annee_button_adj), 1, 0);
-  gtk_widget_show (date_naissance_annee_button);
-  gtk_fixed_put (GTK_FIXED (fixed73), date_naissance_annee_button, 144, 320);
-  gtk_widget_set_size_request (date_naissance_annee_button, 60, 30);
+  date_de_naissance_annee_button_adj = gtk_adjustment_new (1, 1900, 2004, 1, 10, 10);
+  date_de_naissance_annee_button = gtk_spin_button_new (GTK_ADJUSTMENT (date_de_naissance_annee_button_adj), 1, 0);
+  gtk_widget_show (date_de_naissance_annee_button);
+  gtk_fixed_put (GTK_FIXED (fixed73), date_de_naissance_annee_button, 144, 320);
+  gtk_widget_set_size_request (date_de_naissance_annee_button, 60, 30);
 
   label796 = gtk_label_new (_("Date de naissance "));
   gtk_widget_show (label796);
@@ -452,9 +460,9 @@ create_inscription (void)
   GLADE_HOOKUP_OBJECT (inscription, label807, "label807");
   GLADE_HOOKUP_OBJECT (inscription, label808, "label808");
   GLADE_HOOKUP_OBJECT (inscription, label798, "label798");
-  GLADE_HOOKUP_OBJECT (inscription, date_naissance_jour_button, "date_naissance_jour_button");
-  GLADE_HOOKUP_OBJECT (inscription, date_naissance_mois_button, "date_naissance_mois_button");
-  GLADE_HOOKUP_OBJECT (inscription, date_naissance_annee_button, "date_naissance_annee_button");
+  GLADE_HOOKUP_OBJECT (inscription, date_de_naissance_jour_button, "date_de_naissance_jour_button");
+  GLADE_HOOKUP_OBJECT (inscription, date_de_naissance_mois_button, "date_de_naissance_mois_button");
+  GLADE_HOOKUP_OBJECT (inscription, date_de_naissance_annee_button, "date_de_naissance_annee_button");
   GLADE_HOOKUP_OBJECT (inscription, label796, "label796");
   GLADE_HOOKUP_OBJECT (inscription, label800, "label800");
   GLADE_HOOKUP_OBJECT (inscription, label799, "label799");

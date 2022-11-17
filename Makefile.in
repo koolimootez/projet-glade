@@ -315,8 +315,8 @@ top_srcdir = @top_srcdir@
 SUBDIRS = src po
 EXTRA_DIST = \
 	autogen.sh \
-	projet-c-.glade \
-	projet-c-.gladep
+	projet.glade \
+	projet.gladep
 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

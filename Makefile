@@ -69,10 +69,10 @@ am__make_running_with_option = \
   test $$has_opt = yes
 am__make_dryrun = (target_option=n; $(am__make_running_with_option))
 am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
-pkgdatadir = $(datadir)/projet-c-
-pkgincludedir = $(includedir)/projet-c-
-pkglibdir = $(libdir)/projet-c-
-pkglibexecdir = $(libexecdir)/projet-c-
+pkgdatadir = $(datadir)/projet
+pkgincludedir = $(includedir)/projet
+pkglibdir = $(libdir)/projet
+pkglibexecdir = $(libexecdir)/projet
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -223,7 +223,7 @@ ECHO_N = -n
 ECHO_T = 
 EGREP = /bin/grep -E
 EXEEXT = 
-GETTEXT_PACKAGE = projet-c-
+GETTEXT_PACKAGE = projet
 GMOFILES = 
 GMSGFMT = /usr/bin/msgfmt
 GREP = /bin/grep
@@ -246,7 +246,7 @@ MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
 MSGFMT_OPTS = -c
 OBJEXT = o
-PACKAGE = projet-c-
+PACKAGE = projet
 PACKAGE_BUGREPORT = 
 PACKAGE_CFLAGS = -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16
 PACKAGE_LIBS = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype
@@ -315,8 +315,8 @@ top_srcdir = .
 SUBDIRS = src po
 EXTRA_DIST = \
 	autogen.sh \
-	projet-c-.glade \
-	projet-c-.gladep
+	projet.glade \
+	projet.gladep
 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

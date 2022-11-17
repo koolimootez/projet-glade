@@ -16,8 +16,9 @@ int
 main (int argc, char *argv[])
 {
   GtkWidget *connexion;
-  GtkWidget *inscription_;
-  GtkWidget *mot_de_passe_oubli__;
+
+  GtkWidget *inscription;
+  
   GtkWidget *Mes_informations_;
   GtkWidget *accueil;
   GtkWidget *gestion_des_elections_;
@@ -25,7 +26,7 @@ main (int argc, char *argv[])
   GtkWidget *modif_election_;
   GtkWidget *supprimer_election_;
   GtkWidget *Gestion_utilisateur_;
-  GtkWidget *ajout_utilisateur_;
+  GtkWidget *ajout_utilisateur;
   GtkWidget *modification_utlisateur_;
   GtkWidget *supprimer_utilisateur_;
   GtkWidget *Gestion_observateur_;
@@ -69,12 +70,18 @@ main (int argc, char *argv[])
    * (except popup menus), just so that you see something after building
    * the project. Delete any components that you don't want shown initially.
    */
+  
+
+
+  inscription = create_inscription ();
+  gtk_widget_show (inscription);
+
   connexion = create_connexion ();
   gtk_widget_show (connexion);
-  inscription_ = create_inscription ();
-  gtk_widget_show (inscription_);
-  mot_de_passe_oubli__ = create_mot_de_passe_oubli__ ();
-  gtk_widget_show (mot_de_passe_oubli__);
+
+
+  /*
+
   Mes_informations_ = create_Mes_informations_ ();
   gtk_widget_show (Mes_informations_);
   accueil = create_accueil ();
@@ -89,8 +96,8 @@ main (int argc, char *argv[])
   gtk_widget_show (supprimer_election_);
   Gestion_utilisateur_ = create_Gestion_utilisateur_ ();
   gtk_widget_show (Gestion_utilisateur_);
-  ajout_utilisateur_ = create_ajout_utilisateur ();
-  gtk_widget_show (ajout_utilisateur_);
+  ajout_utilisateur = create_ajout_utilisateur ();
+  gtk_widget_show (ajout_utilisateur);
   modification_utlisateur_ = create_modification_utlisateur_ ();
   gtk_widget_show (modification_utlisateur_);
   supprimer_utilisateur_ = create_supprimer_utilisateur_ ();
@@ -143,6 +150,8 @@ main (int argc, char *argv[])
   gtk_widget_show (modif_reclamation_);
   supprimer_reclamation_ = create_supprimer_reclamation_ ();
   gtk_widget_show (supprimer_reclamation_);
+  
+	*/
 
   gtk_main ();
   return 0;
