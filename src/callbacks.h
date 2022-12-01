@@ -6,15 +6,27 @@ on_sincrire_button_clicked             (GtkWidget *objet_graphique,
 
 void
 on_reinitialiser_mot_de_passe_button_clicked
-                                        (GtkButton       *button,
+                                        (GtkWidget *objet_graphique,
                                         gpointer         user_data);
 
-void
-on_sauvegarder_button_clicked          (GtkButton       *button,
-                                        gpointer         user_data);
 
 void
 on_se_connecter_button_clicked         (GtkWidget *objet_graphique,
                                         gpointer         user_data);
 
 
+
+void
+on_mes_informations_sauvgarder_button_clicked
+                                        (GtkWidget *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_ajout_utilisateur_sauvegarder_button_clicked
+                                        (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_modifier_utilisateur_sauvegarder_button_clicked
+                                        (GtkButton       *button,
+                                        gpointer         user_data);

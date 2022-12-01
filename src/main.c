@@ -79,11 +79,12 @@ main (int argc, char *argv[])
   connexion = create_connexion ();
   gtk_widget_show (connexion);
 
+  Mes_informations_ = create_Mes_informations_ ();
+  gtk_widget_show (Mes_informations_);
 
   /*
 
-  Mes_informations_ = create_Mes_informations_ ();
-  gtk_widget_show (Mes_informations_);
+  
   accueil = create_accueil ();
   gtk_widget_show (accueil);
   gestion_des_elections_ = create_gestion_des_elections_ ();
