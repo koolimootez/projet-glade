@@ -1,1 +1,2 @@
-CIN_01 test test 1/1/1900 test H test test test Medenine test test test 
+CIN1 nom prenom 1/1/1900 test homme test test 1233   test AZERTY AZERTY 
+CIN2 nom prenom 1/1/2004 test femme test test 234   test@test.tn AZERTY AZERTY 

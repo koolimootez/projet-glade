@@ -76,11 +76,13 @@ main (int argc, char *argv[])
   inscription = create_inscription ();
   gtk_widget_show (inscription);
 
-  connexion = create_connexion ();
-  gtk_widget_show (connexion);
+ 
 
 
   /*
+
+ connexion = create_connexion ();
+  gtk_widget_show (connexion);
 
   Mes_informations_ = create_Mes_informations_ ();
   gtk_widget_show (Mes_informations_);

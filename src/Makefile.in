@@ -100,7 +100,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_projet_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
-	interface.$(OBJEXT) callbacks.$(OBJEXT) user.$(OBJEXT)
+	interface.$(OBJEXT) callbacks.$(OBJEXT) widget.$(OBJEXT) \
+	user.$(OBJEXT)
 projet_OBJECTS = $(am_projet_OBJECTS)
 am__DEPENDENCIES_1 =
 projet_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -282,6 +283,7 @@ projet_SOURCES = \
 	support.c support.h \
 	interface.c interface.h \
 	callbacks.c callbacks.h \
+	widget.c widget.h \
 	user.c user.h
 
 projet_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
@@ -376,6 +378,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/support.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/user.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
