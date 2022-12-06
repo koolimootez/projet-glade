@@ -13,32 +13,32 @@
 
 
 void
-on_sincrire_button_clicked             (GtkWidget *objet_graphique,
+on_sincrire_button_clicked             (GtkWidget *interface,
                                         gpointer         user_data)
 {
 	
 	// Get identifiant 
 	char identifiant [100];
-	entry_get_value(objet_graphique, "identifiant_entry", identifiant);
+	entry_get_value(interface, "identifiant_entry", identifiant);
 	
 	// Get nom 
 	char nom [100];
-	entry_get_value(objet_graphique, "nom_entry", nom);
+	entry_get_value(interface, "nom_entry", nom);
 
 	// Get prenom 
 	char prenom [100];
-	entry_get_value(objet_graphique, "prenom_entry", prenom);
+	entry_get_value(interface, "prenom_entry", prenom);
 
 	
 	// Get date de naissance 
 	char date_de_naissance_jour [100];
-	spin_button_get_value(objet_graphique, "date_de_naissance_jour_button", date_de_naissance_jour);
+	spin_button_get_value(interface, "date_de_naissance_jour_button", date_de_naissance_jour);
 	
 	char date_de_naissance_mois [100];
-	spin_button_get_value(objet_graphique, "date_de_naissance_mois_button", date_de_naissance_mois);
+	spin_button_get_value(interface, "date_de_naissance_mois_button", date_de_naissance_mois);
 
 	char date_de_naissance_annee [100];
-	spin_button_get_value(objet_graphique, "date_de_naissance_annee_button", date_de_naissance_annee);
+	spin_button_get_value(interface, "date_de_naissance_annee_button", date_de_naissance_annee);
 
 	char  date_de_naissance [100];
 	
@@ -50,10 +50,10 @@ on_sincrire_button_clicked             (GtkWidget *objet_graphique,
 
 	// Get lieu de naissance 
 	char lieu_de_naissance [100];
-	entry_get_value(objet_graphique, "lieu_de_naissance_entry", lieu_de_naissance);
+	entry_get_value(interface, "lieu_de_naissance_entry", lieu_de_naissance);
 
 	// Get genre 
-	int  genre_radio_button_value = radio_button_get_value(objet_graphique, "genre_homme_button");
+	int  genre_radio_button_value = radio_button_get_value(interface, "genre_homme_button");
 	char genre [100];
 
 	if(genre_radio_button_value == 1)
@@ -66,35 +66,35 @@ on_sincrire_button_clicked             (GtkWidget *objet_graphique,
 
 	// Get statut social 
 	char statut_social [100];
-	entry_get_value(objet_graphique, "statut_social_entry", statut_social);
+	entry_get_value(interface, "statut_social_entry", statut_social);
 
 	// Get adresse
 	char adresse [100];
-	entry_get_value(objet_graphique, "adresse_entry", adresse);
+	entry_get_value(interface, "adresse_entry", adresse);
 
 	// Get code postal 
 	char code_postal [100];
-	entry_get_value(objet_graphique, "code_postal_entry", code_postal);
+	entry_get_value(interface, "code_postal_entry", code_postal);
 
 	// Get gouvernorat
 	char gouvernorat [100];
-	combo_box_get_value(objet_graphique, "gouvernorat_entry", gouvernorat);
+	combo_box_get_value(interface, "gouvernorat_entry", gouvernorat);
 
 	// Get email
 	char email [100];
-	entry_get_value(objet_graphique, "email_entry", email);
+	entry_get_value(interface, "email_entry", email);
 
 	// Get Mot de passe 
 	char mot_de_passe [100];
-	entry_get_value(objet_graphique, "mot_de_passe_entry", mot_de_passe);
+	entry_get_value(interface, "mot_de_passe_entry", mot_de_passe);
 
 	// Get confirmer mot de passe 
 	char confirmer_mot_de_passe [100];
-	entry_get_value(objet_graphique, "confirmer_mot_de_passe_entry", confirmer_mot_de_passe);
+	entry_get_value(interface, "confirmer_mot_de_passe_entry", confirmer_mot_de_passe);
 	
 	// Get message 
 
-	char * message = sinscrire(identifiant, 
+	char * message = sinscrire(identifiant,
 				nom,
 				prenom,
 				date_de_naissance,
@@ -106,59 +106,68 @@ on_sincrire_button_clicked             (GtkWidget *objet_graphique,
 				gouvernorat,
 				email,
 				mot_de_passe,
-				confirmer_mot_de_passe); 
+				confirmer_mot_de_passe);
 
-	label_set_value(objet_graphique, "message_label", message);
+	label_set_value(interface, "message_label", message);
 		
 }
 
 void
-on_se_connecter_button_clicked         (GtkWidget *objet_graphique, 
+on_se_connecter_button_clicked         (GtkWidget *interface, 
 					gpointer         user_data)
 {
 
-	GtkWidget * identifiant_entry ;
-	char identifiant_value [20];
-	identifiant_entry = lookup_widget(objet_graphique, "identifiant_entry") ;
-	strcpy(identifiant_value,gtk_entry_get_text(GTK_ENTRY(identifiant_entry)));
+	// Get identifiant 
+	char identifiant [100];
+	entry_get_value(interface, "identifiant_entry", identifiant);
 
-
-
-	GtkWidget * mot_de_passe_entry ;
-	char mot_de_passe_value [20];
-	mot_de_passe_entry = lookup_widget(objet_graphique, "mot_de_passe_entry") ;
-	strcpy(mot_de_passe_value,gtk_entry_get_text(GTK_ENTRY(mot_de_passe_entry)));
-
-
-
-	GtkWidget * message_label ;
-	char * message_value;
-	message_label = lookup_widget(objet_graphique, "message_label") ;
-	message_value = se_connecter(identifiant_value, mot_de_passe_value);  
-
-	gtk_label_set_text(GTK_LABEL(message_label), message_value);
-
+	// Get Mot de passe 
+	char mot_de_passe [100];
+	entry_get_value(interface, "mot_de_passe_entry", mot_de_passe);
    	
+	// Get message
+	char * message = se_connecter (identifiant, mot_de_passe);
 
+	label_set_value(interface, "message_label", message);
+		
 }
-
-
 void
-on_reinitialiser_mot_de_passe_button_clicked
-                                        (GtkButton       *button,
-                                        gpointer         user_data)
+on_reinitialiser_mot_de_passe_button_clicked (GtkWidget *interface,
+                                                gpointer         user_data)
 {
+    // Get identifiant
+    char identifiant [100];
+    entry_get_value(interface, "identifiant_entry", identifiant);
 
+    // get date de naissance
+    char date_de_naissance_jour [100];
+	spin_button_get_value(interface, "date_naissance_jour_button", date_de_naissance_jour);
+
+	char date_de_naissance_mois [100];
+	spin_button_get_value(interface, "date_naissance_mois_button", date_de_naissance_mois);
+
+	char date_de_naissance_annee [100];
+	spin_button_get_value(interface, "date_naissance_annee_button", date_de_naissance_annee);
+
+	char  date_de_naissance [100];
+	strcpy(date_de_naissance, date_de_naissance_jour);
+	strcat(date_de_naissance,"/");
+	strcat(date_de_naissance,date_de_naissance_mois);
+	strcat(date_de_naissance,"/");
+	strcat(date_de_naissance,date_de_naissance_annee);
+
+    // get nouveau mot de passe
+    char nouveau_mot_de_passe [100];
+    entry_get_value(interface, "nouveau_mot_de_passe_entry", nouveau_mot_de_passe);
+
+  // get confirmer nouveau mot de passe
+    char confirmer_nouveau_mot_de_passe [100];
+    entry_get_value(interface, "confirmer_nouveau_mot_de_passe_entry", confirmer_nouveau_mot_de_passe);
+
+    // get message
+    char * message = reinitialiser_mot_de_passe(identifiant, date_de_naissance, nouveau_mot_de_passe, confirmer_nouveau_mot_de_passe);
+
+    // display message dans le label
+	label_set_value(interface, "message_label", message);
 }
-
-
-void
-on_sauvegarder_button_clicked          (GtkButton       *button,
-                                        gpointer         user_data)
-{
-
-}
-
-
-
 

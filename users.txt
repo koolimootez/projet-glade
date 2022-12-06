@@ -1,2 +1,3 @@
-CIN1 nom prenom 1/1/1900 test homme test test 1233   test AZERTY AZERTY 
-CIN2 nom prenom 1/1/2004 test femme test test 234   test@test.tn AZERTY AZERTY 
+CIN0 nom prenom 1/1/1900 test femme test test 1234 test a nouveau_test 
+CIN1 nom prenom 1/1/1900 test femme test test 1234 test a test 
+CIN2 nom prenom 1/1/1900 test femme test test 1234 test a test 

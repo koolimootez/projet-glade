@@ -18,6 +18,8 @@ main (int argc, char *argv[])
   GtkWidget *connexion;
 
   GtkWidget *inscription;
+
+  GtkWidget *mot_de_passe_oublie;
   
   GtkWidget *Mes_informations_;
   GtkWidget *accueil;
@@ -71,18 +73,16 @@ main (int argc, char *argv[])
    * the project. Delete any components that you don't want shown initially.
    */
   
+    // connexion = create_connexion ();
+    // gtk_widget_show (connexion);
 
+    // inscription = create_inscription ();
+    // gtk_widget_show (inscription);
 
-  inscription = create_inscription ();
-  gtk_widget_show (inscription);
-
- 
-
+    mot_de_passe_oublie = create_mot_de_passe_oubli__ ();
+    gtk_widget_show (mot_de_passe_oublie);
 
   /*
-
- connexion = create_connexion ();
-  gtk_widget_show (connexion);
 
   Mes_informations_ = create_Mes_informations_ ();
   gtk_widget_show (Mes_informations_);

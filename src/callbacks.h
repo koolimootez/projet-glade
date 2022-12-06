@@ -1,32 +1,34 @@
 #include <gtk/gtk.h>
 
 void
-on_sincrire_button_clicked             (GtkWidget *objet_graphique,
+on_sincrire_button_clicked             (GtkWidget *interface,
                                         gpointer         user_data);
 
 void
-on_reinitialiser_mot_de_passe_button_clicked
-                                        (GtkWidget *objet_graphique,
+on_reinitialiser_mot_de_passe_button_clicked (GtkWidget *interface,
                                         gpointer         user_data);
 
 
 void
-on_se_connecter_button_clicked         (GtkWidget *objet_graphique,
+on_se_connecter_button_clicked         (GtkWidget *interface,
                                         gpointer         user_data);
 
 
 
 void
-on_mes_informations_sauvgarder_button_clicked
-                                        (GtkWidget *objet_graphique,
-                                        gpointer         user_data);
+on_mes_informations_sauvgarder_button_clicked (GtkWidget *interface,
+                                                gpointer         user_data);
 
 void
-on_ajout_utilisateur_sauvegarder_button_clicked
-                                        (GtkButton       *button,
-                                        gpointer         user_data);
+on_reinitialiser_mot_de_passe_button_clicked (GtkWidget *interface,
+                                                gpointer         user_data);
 
 void
-on_modifier_utilisateur_sauvegarder_button_clicked
-                                        (GtkButton       *button,
+on_sauvegarder_button_clicked          (GtkWidget *interface,
                                         gpointer         user_data);
+
+
+
+void
+on_reinitialiser_mot_de_passe_button_clicked (GtkWidget *interface,
+                                                gpointer         user_data);

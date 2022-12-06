@@ -1,5 +1,5 @@
-#ifndef USER_H_INCLUDED
-#define USER_H_INCLUDED
+#ifndef WIDGET_H_INCLUDED
+#define WIDGET_H_INCLUDED
 
 void entry_get_value(GtkWidget * interface,
 			char entry_name [],

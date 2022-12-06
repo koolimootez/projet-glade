@@ -15,13 +15,12 @@ char code_postal [20];
 char gouvernorat [50];
 char email [50];
 char mot_de_passe [20];
-char confirmer_mot_de_passe [20];
 }User;
 
 
 char * se_connecter(char identifiant [], char mot_de_passe []);
 
-char * sinscrire(char identifiant [], 
+char * sinscrire(char identifiant [],
 		char nom [],
 		char prenom [],
 		char date_de_naissance [],
@@ -33,6 +32,17 @@ char * sinscrire(char identifiant [],
 		char gouvernorat [],
 		char email [],
 		char mot_de_passe [],
-		char confirmer_mot_de_passe []); 
+		char confirmer_mot_de_passe []);
+
+User chercher(char identifiant [],
+              char date_de_naissance []);
+
+char * modifier(char * identifiant, User nouveau_user);
+
+char *	reinitialiser_mot_de_passe(char identifiant [],
+                                    char date_de_naissance [],
+                                    char mot_de_passe [],
+                                    char confirmer_mot_de_passe []);
+
 
 #endif
