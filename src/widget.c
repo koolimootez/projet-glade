@@ -31,7 +31,7 @@ void spin_button_get_value(GtkWidget * interface,
 int radio_button_get_value(GtkWidget * interface,
 			char radio_button_name []){
 
-	GtkWidget * radio_button = lookup_widget(interface, radio_button_name) ; ;
+	GtkWidget * radio_button = lookup_widget(interface, radio_button_name) ;
 	return  gtk_toggle_button_get_active(GTK_RADIO_BUTTON(radio_button));
 	
 }

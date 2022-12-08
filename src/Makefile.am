@@ -13,6 +13,7 @@ projet_SOURCES = \
 	interface.c interface.h \
 	callbacks.c callbacks.h \
 	widget.c widget.h \
+	search_criteria.h \
 	user.c user.h
 
 projet_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)

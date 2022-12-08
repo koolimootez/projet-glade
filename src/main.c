@@ -73,19 +73,29 @@ main (int argc, char *argv[])
    * the project. Delete any components that you don't want shown initially.
    */
   
-    // connexion = create_connexion ();
-    // gtk_widget_show (connexion);
+    //connexion = create_connexion ();
+    //gtk_widget_show (connexion);
 
-    // inscription = create_inscription ();
-    // gtk_widget_show (inscription);
+     //inscription = create_inscription ();
+     //gtk_widget_show (inscription);
 
-    mot_de_passe_oublie = create_mot_de_passe_oubli__ ();
-    gtk_widget_show (mot_de_passe_oublie);
+    //mot_de_passe_oublie = create_mot_de_passe_oubli__ ();
+    //gtk_widget_show (mot_de_passe_oublie);
+
+    // Mes_informations_ = create_Mes_informations_ ();
+    // gtk_widget_show (Mes_informations_);
+
+     ajout_utilisateur = create_ajout_utilisateur ();
+     gtk_widget_show (ajout_utilisateur);
+
+    modification_utlisateur_ = create_modification_utlisateur_ ();
+    gtk_widget_show (modification_utlisateur_);
+    // supprimer_utilisateur_ = create_supprimer_utilisateur_ ();
+    // gtk_widget_show (supprimer_utilisateur_);
 
   /*
 
-  Mes_informations_ = create_Mes_informations_ ();
-  gtk_widget_show (Mes_informations_);
+
   accueil = create_accueil ();
   gtk_widget_show (accueil);
   gestion_des_elections_ = create_gestion_des_elections_ ();
@@ -98,12 +108,7 @@ main (int argc, char *argv[])
   gtk_widget_show (supprimer_election_);
   Gestion_utilisateur_ = create_Gestion_utilisateur_ ();
   gtk_widget_show (Gestion_utilisateur_);
-  ajout_utilisateur = create_ajout_utilisateur ();
-  gtk_widget_show (ajout_utilisateur);
-  modification_utlisateur_ = create_modification_utlisateur_ ();
-  gtk_widget_show (modification_utlisateur_);
-  supprimer_utilisateur_ = create_supprimer_utilisateur_ ();
-  gtk_widget_show (supprimer_utilisateur_);
+
   Gestion_observateur_ = create_Gestion_observateur_ ();
   gtk_widget_show (Gestion_observateur_);
   ajouter_observateur_ = create_ajouter_observateur_ ();

@@ -1,3 +1,2 @@
-CIN0 nom prenom 1/1/1900 test femme test test 1234 test a nouveau_test 
-CIN1 nom prenom 1/1/1900 test femme test test 1234 test a test 
-CIN2 nom prenom 1/1/1900 test femme test test 1234 test a test 
+CIN0 test test 1/1/1 test femme Ğ®×ğQ test test p}g©zU test    test p0c©zU 
+CIN0 test test 1/1/1 test femme P”l©zU test test H test   P|I©zU test p0c©zU 

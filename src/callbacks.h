@@ -32,3 +32,12 @@ on_sauvegarder_button_clicked          (GtkWidget *interface,
 void
 on_reinitialiser_mot_de_passe_button_clicked (GtkWidget *interface,
                                                 gpointer         user_data);
+
+
+void
+on_ajout_utilisateur_sauvegarder_button_clicked (GtkWidget *interface,
+                                                gpointer   user_data);
+
+void
+on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
+                                                     gpointer   user_data);
