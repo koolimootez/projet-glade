@@ -85,11 +85,11 @@ main (int argc, char *argv[])
     // Mes_informations_ = create_Mes_informations_ ();
     // gtk_widget_show (Mes_informations_);
 
-     ajout_utilisateur = create_ajout_utilisateur ();
-     gtk_widget_show (ajout_utilisateur);
+    ajout_utilisateur = create_ajout_utilisateur ();
+    gtk_widget_show (ajout_utilisateur);
 
-    modification_utlisateur_ = create_modification_utlisateur_ ();
-    gtk_widget_show (modification_utlisateur_);
+    //modification_utlisateur_ = create_modification_utlisateur_ ();
+    //gtk_widget_show (modification_utlisateur_);
     // supprimer_utilisateur_ = create_supprimer_utilisateur_ ();
     // gtk_widget_show (supprimer_utilisateur_);
 

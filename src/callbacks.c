@@ -11,6 +11,7 @@
 #include "user.h"
 #include "widget.h"
 #include "search_criteria.h"
+#include "password.h"
 
 void
 on_sincrire_button_clicked             (GtkWidget *interface,
@@ -68,9 +69,9 @@ on_sincrire_button_clicked             (GtkWidget *interface,
 	char statut_social [100];
 	entry_get_value(interface, "statut_social_entry", statut_social);
 
-	// Get adresse
-	char adresse [100];
-	entry_get_value(interface, "adresse_entry", adresse);
+	// Get addresse
+	char addresse [100];
+	entry_get_value(interface, "adresse_entry", addresse);
 
 	// Get code postal 
 	char code_postal [100];
@@ -92,7 +93,7 @@ on_sincrire_button_clicked             (GtkWidget *interface,
 	char confirmer_mot_de_passe [100];
 	entry_get_value(interface, "confirmer_mot_de_passe_entry", confirmer_mot_de_passe);
 	
-	// Get message 
+	// Get message
     User user_to_add;
     strcpy(user_to_add.identifiant , identifiant);
     strcpy(user_to_add.nom , nom);
@@ -101,7 +102,7 @@ on_sincrire_button_clicked             (GtkWidget *interface,
     strcpy(user_to_add.lieu_de_naissance , lieu_de_naissance);
     strcpy(user_to_add.genre , genre);
     strcpy(user_to_add.statut_social , statut_social);
-    strcpy(user_to_add.addresse , adresse);
+    strcpy(user_to_add.addresse , addresse);
     strcpy(user_to_add.code_postal , code_postal);
     strcpy(user_to_add.gouvernorat , gouvernorat);
     strcpy(user_to_add.email , email);
@@ -235,9 +236,9 @@ void on_mes_informations_sauvgarder_button_clicked
     	char statut_social [100];
     	entry_get_value(interface, "statut_social_entry", statut_social);
 
-    	// Get adresse
-    	char adresse [100];
-    	entry_get_value(interface, "adresse_entry", adresse);
+    	// Get addresse
+    	char addresse [100];
+    	entry_get_value(interface, "adresse_entry", addresse);
 
     	// Get code postal
     	char code_postal [100];
@@ -257,31 +258,30 @@ void on_mes_informations_sauvgarder_button_clicked
 
 
         //get message
-        Search_criteria criterias [1] = {
-                {
-                key: "identifiant",
-                value: identifiant
-                }
-        };
+        Search_criteria criterias [1];
+        strcpy(criterias[0].key , "identifiant");
+        strcpy(criterias[0].value , identifiant);
+
 
         User old_user = chercher(criterias);
-        User new_user ;
-        strcpy(new_user.identifiant, old_user.identifiant);
-        strcpy(new_user.nom, old_user.nom);
-        strcpy(new_user.prenom, old_user.prenom);
-        strcpy(new_user.date_de_naissance, old_user.date_de_naissance);
-        strcpy(new_user.lieu_de_naissance, old_user.lieu_de_naissance);
-        strcpy(new_user.genre, old_user.genre);
-        strcpy(new_user.statut_social, old_user.statut_social);
-        strcpy(new_user.addresse, old_user.addresse);
-        strcpy(new_user.code_postal, old_user.code_postal);
-        strcpy(new_user.gouvernorat, old_user.gouvernorat);
-        strcpy(new_user.email, old_user.email);
-        strcpy(new_user.mot_de_passe, old_user.mot_de_passe);
-        strcpy(new_user.bureau_de_vote, old_user.bureau_de_vote);
-        strcpy(new_user.role ,  old_user.role);
+        User new_user;
+        strcpy(new_user.identifiant , old_user.identifiant);
+        strcpy(new_user.nom , nom);
+        strcpy(new_user.prenom , prenom);
+        strcpy(new_user.date_de_naissance , date_de_naissance);
+        strcpy(new_user.lieu_de_naissance , lieu_de_naissance);
+        strcpy(new_user.genre , genre);
+        strcpy(new_user.statut_social , statut_social);
+        strcpy(new_user.addresse , addresse);
+        strcpy(new_user.code_postal , code_postal);
+        strcpy(new_user.gouvernorat , gouvernorat);
+        strcpy(new_user.email , email);
+        strcpy(new_user.mot_de_passe , old_user.mot_de_passe);
+        strcpy(new_user.bureau_de_vote , bureau_de_vote);
+        strcpy(new_user.role , old_user.role);
         strcpy(new_user.profession , old_user.profession);
-        strcpy(new_user.liste_electorale , old_user.profession);
+        strcpy(new_user.liste_electorale ,  old_user.liste_electorale);
+
         char * message = modifier(identifiant, new_user);
        // display message dans le label
         label_set_value(interface, "message_label", message);
@@ -346,9 +346,9 @@ on_ajout_utilisateur_sauvegarder_button_clicked
     	char statut_social [100];
     	combo_box_get_value(interface, "statut_social_entry", statut_social);
 
-    	// Get adresse
-    	char adresse [100];
-    	entry_get_value(interface, "adresse_entry", adresse);
+    	// Get addresse
+    	char addresse [100];
+    	entry_get_value(interface, "adresse_entry", addresse);
 
     	// Get code postal
     	char code_postal [100];
@@ -378,8 +378,12 @@ on_ajout_utilisateur_sauvegarder_button_clicked
         char liste_electorale [100];
         combo_box_get_value(interface, "liste_electorale_entry", liste_electorale);
 
+        // Get password
+       char mot_de_passe[12];
+        generate_password(mot_de_passe);
+
         // Get message
-        User user_to_add;
+        User user_to_add ;
         strcpy(user_to_add.identifiant , identifiant);
         strcpy(user_to_add.nom , nom);
         strcpy(user_to_add.prenom , prenom);
@@ -387,12 +391,12 @@ on_ajout_utilisateur_sauvegarder_button_clicked
         strcpy(user_to_add.lieu_de_naissance , lieu_de_naissance);
         strcpy(user_to_add.genre , genre);
         strcpy(user_to_add.statut_social , statut_social);
-        strcpy(user_to_add.addresse , adresse);
+        strcpy(user_to_add.addresse , addresse);
         strcpy(user_to_add.code_postal , code_postal);
         strcpy(user_to_add.gouvernorat , gouvernorat);
-        strcpy(user_to_add.bureau_de_vote , bureau_de_vote);
         strcpy(user_to_add.email , email);
-        strcpy(user_to_add.mot_de_passe , "");
+        strcpy(user_to_add.mot_de_passe , mot_de_passe);
+        strcpy(user_to_add.bureau_de_vote, bureau_de_vote);
         strcpy(user_to_add.role , role);
         strcpy(user_to_add.profession , profession);
         strcpy(user_to_add.liste_electorale , liste_electorale);
@@ -461,9 +465,9 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
     	char statut_social [100];
     	combo_box_get_value(interface, "statut_social_entry", statut_social);
 
-    	// Get adresse
-    	char adresse [100];
-    	entry_get_value(interface, "adresse_entry", adresse);
+    	// Get addresse
+    	char addresse [100];
+    	entry_get_value(interface, "adresse_entry", addresse);
 
     	// Get code postal
     	char code_postal [100];
@@ -494,30 +498,29 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
         combo_box_get_value(interface, "liste_electorale_entry", liste_electorale);
 
         // Get message
-      Search_criteria criterias [1] = {
-                    {
-                    key: "identifiant",
-                    value: identifiant
-                    }
-            };
+        Search_criteria criterias [1];
+        strcpy(criterias[0].key , "identifiant");
+        strcpy(criterias[0].value , identifiant);
+
         User old_user = chercher(criterias);
         User new_user ;
-        strcpy(new_user.identifiant, old_user.identifiant);
-        strcpy(new_user.nom, nom);
-        strcpy(new_user.prenom, prenom);
-        strcpy(new_user.date_de_naissance, date_de_naissance);
-        strcpy(new_user.lieu_de_naissance, lieu_de_naissance);
-        strcpy(new_user.genre, genre);
-        strcpy(new_user.statut_social, statut_social);
-            strcpy(new_user.addresse, adresse);
-        strcpy(new_user.code_postal, code_postal);
-        strcpy(new_user.gouvernorat, gouvernorat);
-        strcpy(new_user.email, email);
-        strcpy(new_user.mot_de_passe, old_user.mot_de_passe);
+        strcpy(new_user.identifiant , old_user.identifiant);
+        strcpy(new_user.nom , nom);
+        strcpy(new_user.prenom , prenom);
+        strcpy(new_user.date_de_naissance , date_de_naissance);
+        strcpy(new_user.lieu_de_naissance , lieu_de_naissance);
+        strcpy(new_user.genre , genre);
+        strcpy(new_user.statut_social , statut_social);
+        strcpy(new_user.addresse , addresse);
+        strcpy(new_user.code_postal , code_postal);
+        strcpy(new_user.gouvernorat , gouvernorat);
+        strcpy(new_user.email , email);
+        strcpy(new_user.mot_de_passe , old_user.mot_de_passe);
         strcpy(new_user.bureau_de_vote, bureau_de_vote);
         strcpy(new_user.role , role);
         strcpy(new_user.profession , profession);
-        strcpy(new_user.liste_electorale , profession);
+        strcpy(new_user.liste_electorale , liste_electorale);
+
         char * message = modifier(identifiant, new_user);
 
         label_set_value(interface, "message_label", message);

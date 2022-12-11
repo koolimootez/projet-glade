@@ -55,19 +55,32 @@ void getFieldValue(User u , char key [], char user_value []){
                 strcpy(user_value, u.liste_electorale);
             }
 }
-char *  ajouter(User u, char file_name[]){
+char *  ajouter(User user_to_add, char file_name[]){
+    // on veut chercher si un utilisateur existe avec le meme identifiant de user_to_add
+    Search_criteria criterias [1];
+    strcpy(criterias[0].key, "identifiant");
+    strcpy(criterias[0].value, user_to_add.identifiant);
 
-  	 FILE *file = fopen(file_name, "a");
-    if(file != NULL)
+    User searched_user = chercher(criterias);
+    // si un utilsateur avec le meme identifiant existe => message : L'utilisateur existe déja
+    if (strcmp(searched_user.identifiant,"-1") != 0)
     {
-    fprintf(file,"%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s \n",
-                u.identifiant, u.nom, u.prenom, u.date_de_naissance, u.lieu_de_naissance,
-                u.genre, u.statut_social, u.addresse, u.code_postal, u.gouvernorat,
-                u.email, u.mot_de_passe, u.bureau_de_vote, u.role, u.profession, u.liste_electorale);
-    fclose(file);
-    return "L'utilisateur a été ajouté avec succès !";
-    } else {
-        return "Echec d'ajout utilisateur !";
+    return "utilisateur existe déja !";
+    }
+    // sinon on ajoute l'utilisateur = message : L'utilisateur a été ajouté avec succès
+    else
+    {
+         FILE *file = fopen(file_name, "a");
+        if(file != NULL)
+            {
+        fprintf(file,"%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s \n",
+                    user_to_add.identifiant, user_to_add.nom, user_to_add.prenom, user_to_add.date_de_naissance,
+                    user_to_add.lieu_de_naissance, user_to_add.genre, user_to_add.statut_social, user_to_add.addresse,
+                    user_to_add.code_postal, user_to_add.gouvernorat, user_to_add.email, user_to_add.mot_de_passe,
+                    user_to_add.bureau_de_vote, user_to_add.role, user_to_add.profession, user_to_add.liste_electorale);
+        fclose(file);
+        return "L'utilisateur a été ajouté avec succès !";
+            }
     }
 
  }
@@ -125,29 +138,24 @@ User chercher(Search_criteria criterias []){
             int i = 0;
             int do_match = 1;
             int total_length = sizeof criterias / sizeof *criterias;;
-              FILE *file_test = fopen("test.txt", "a");
-                            fprintf(file_test,"%d \n",
-                                         total_length
-                                         );
-                            fclose(file_test);
+
             while(do_match == 1 && i < total_length)
             {
-                Search_criteria criteria = criterias[i];
-                char userValue [20];
-                getFieldValue(u, criteria.key, userValue);
-                if(strcmp(criteria.value , userValue) != 0)
+                    Search_criteria criteria = criterias[i];
+                    char userValue [20];
+                    getFieldValue(u, criteria.key, userValue);
+                    if(strcmp(criteria.value , userValue) != 0)
                     {
                     do_match = 0;
                     }
-               else
+                   else
                    {
                         i++;
                    }
             }
-
             if(do_match == 1)
             {
-                   trouver = 1;
+                trouver = 1;
             }
         }
         fclose(file);

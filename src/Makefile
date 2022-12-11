@@ -101,7 +101,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_projet_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
 	interface.$(OBJEXT) callbacks.$(OBJEXT) widget.$(OBJEXT) \
-	user.$(OBJEXT)
+	password.$(OBJEXT) user.$(OBJEXT)
 projet_OBJECTS = $(am_projet_OBJECTS)
 am__DEPENDENCIES_1 =
 projet_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -285,6 +285,7 @@ projet_SOURCES = \
 	callbacks.c callbacks.h \
 	widget.c widget.h \
 	search_criteria.h \
+	password.c password.h \
 	user.c user.h
 
 projet_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(INTLLIBS)
@@ -377,6 +378,7 @@ distclean-compile:
 include ./$(DEPDIR)/callbacks.Po
 include ./$(DEPDIR)/interface.Po
 include ./$(DEPDIR)/main.Po
+include ./$(DEPDIR)/password.Po
 include ./$(DEPDIR)/support.Po
 include ./$(DEPDIR)/user.Po
 include ./$(DEPDIR)/widget.Po

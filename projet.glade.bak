@@ -7239,7 +7239,7 @@ Monastir</property>
 	  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 	  <property name="snap_to_ticks">False</property>
 	  <property name="wrap">False</property>
-	  <property name="adjustment">1 0 100 1 10 10</property>
+	  <property name="adjustment">1 1900 2004 1 10 10</property>
 	</widget>
 	<packing>
 	  <property name="x">152</property>
@@ -7665,7 +7665,7 @@ Monastir</property>
 	  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 	  <property name="snap_to_ticks">False</property>
 	  <property name="wrap">False</property>
-	  <property name="adjustment">1 0 100 1 10 10</property>
+	  <property name="adjustment">1 1 31 1 10 10</property>
 	</widget>
 	<packing>
 	  <property name="x">16</property>
@@ -7685,7 +7685,7 @@ Monastir</property>
 	  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 	  <property name="snap_to_ticks">False</property>
 	  <property name="wrap">False</property>
-	  <property name="adjustment">1 0 100 1 10 10</property>
+	  <property name="adjustment">1 1 12 1 10 10</property>
 	</widget>
 	<packing>
 	  <property name="x">88</property>
@@ -7827,21 +7827,6 @@ conseiller</property>
       </child>
 
       <child>
-	<widget class="GtkComboBoxEntry" id="liste_electorale_entry">
-	  <property name="width_request">275</property>
-	  <property name="height_request">36</property>
-	  <property name="visible">True</property>
-	  <property name="add_tearoffs">False</property>
-	  <property name="has_frame">True</property>
-	  <property name="focus_on_click">True</property>
-	</widget>
-	<packing>
-	  <property name="x">24</property>
-	  <property name="y">768</property>
-	</packing>
-      </child>
-
-      <child>
 	<widget class="GtkLabel" id="label909">
 	  <property name="width_request">200</property>
 	  <property name="height_request">32</property>
@@ -7890,6 +7875,21 @@ conseiller</property>
 	<packing>
 	  <property name="x">8</property>
 	  <property name="y">104</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkComboBoxEntry" id="liste_electorale_entry">
+	  <property name="width_request">275</property>
+	  <property name="height_request">36</property>
+	  <property name="visible">True</property>
+	  <property name="add_tearoffs">False</property>
+	  <property name="has_frame">True</property>
+	  <property name="focus_on_click">True</property>
+	</widget>
+	<packing>
+	  <property name="x">8</property>
+	  <property name="y">776</property>
 	</packing>
       </child>
     </widget>

@@ -101,7 +101,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_projet_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
 	interface.$(OBJEXT) callbacks.$(OBJEXT) widget.$(OBJEXT) \
-	user.$(OBJEXT)
+	password.$(OBJEXT) user.$(OBJEXT)
 projet_OBJECTS = $(am_projet_OBJECTS)
 am__DEPENDENCIES_1 =
 projet_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -285,6 +285,7 @@ projet_SOURCES = \
 	callbacks.c callbacks.h \
 	widget.c widget.h \
 	search_criteria.h \
+	password.c password.h \
 	user.c user.h
 
 projet_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
@@ -377,6 +378,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interface.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/password.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/support.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/user.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Po@am__quote@
