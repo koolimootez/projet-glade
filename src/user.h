@@ -40,5 +40,7 @@ char *	reinitialiser_mot_de_passe(char identifiant [],
 
 void getFieldValue(User u , char key [], char user_value []);
 
+char * supprimer(char identifiant []);
+
 
 #endif

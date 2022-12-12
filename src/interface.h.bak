@@ -4,14 +4,14 @@
 
 GtkWidget* create_connexion (void);
 GtkWidget* create_inscription (void);
-GtkWidget* create_mot_de_passe_oubli__ (void);
+GtkWidget* create_mot_de_passe_oublie (void);
 GtkWidget* create_Mes_informations_ (void);
 GtkWidget* create_accueil (void);
 GtkWidget* create_gestion_des_elections_ (void);
 GtkWidget* create_ajout_election_ (void);
 GtkWidget* create_modif_election_ (void);
 GtkWidget* create_supprimer_election_ (void);
-GtkWidget* create_Gestion_utilisateur_ (void);
+GtkWidget* create_gestion_utilisateur (void);
 GtkWidget* create_ajout_utilisateur (void);
 GtkWidget* create_modification_utlisateur_ (void);
 GtkWidget* create_supprimer_utilisateur_ (void);
@@ -39,3 +39,4 @@ GtkWidget* create_gestion__reclamation_ (void);
 GtkWidget* create_ajout_reclamation_ (void);
 GtkWidget* create_modif_reclamation_ (void);
 GtkWidget* create_supprimer_reclamation_ (void);
+GtkWidget* create_window1 (void);

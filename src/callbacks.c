@@ -415,67 +415,67 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
 {
 
         // Get identifiant
-    	char identifiant [100];
-    	entry_get_value(interface, "identifiant_entry", identifiant);
+        char identifiant [100];
+        entry_get_value(interface, "identifiant_entry", identifiant);
 
-    	// Get nom
-    	char nom [100];
-    	entry_get_value(interface, "nom_entry", nom);
+        // Get nom
+        char nom [100];
+        entry_get_value(interface, "nom_entry", nom);
 
-    	// Get prenom
-    	char prenom [100];
-    	entry_get_value(interface, "prenom_entry", prenom);
+        // Get prenom
+        char prenom [100];
+        entry_get_value(interface, "prenom_entry", prenom);
 
 
-    	// Get date de naissance
-    	char date_de_naissance_jour [100];
-    	spin_button_get_value(interface, "date_de_naissance_jour_button", date_de_naissance_jour);
+        // Get date de naissance
+        char date_de_naissance_jour [100];
+        spin_button_get_value(interface, "date_de_naissance_jour_button", date_de_naissance_jour);
 
-    	char date_de_naissance_mois [100];
-    	spin_button_get_value(interface, "date_de_naissance_mois_button", date_de_naissance_mois);
+        char date_de_naissance_mois [100];
+        spin_button_get_value(interface, "date_de_naissance_mois_button", date_de_naissance_mois);
 
-    	char date_de_naissance_annee [100];
-    	spin_button_get_value(interface, "date_de_naissance_annee_button", date_de_naissance_annee);
+        char date_de_naissance_annee [100];
+        spin_button_get_value(interface, "date_de_naissance_annee_button", date_de_naissance_annee);
 
-    	char  date_de_naissance [100];
+        char  date_de_naissance [100];
 
-    	strcpy(date_de_naissance, date_de_naissance_jour);
-    	strcat(date_de_naissance,"/");
-    	strcat(date_de_naissance,date_de_naissance_mois);
-    	strcat(date_de_naissance,"/");
-    	strcat(date_de_naissance,date_de_naissance_annee);
+        strcpy(date_de_naissance, date_de_naissance_jour);
+        strcat(date_de_naissance,"/");
+        strcat(date_de_naissance,date_de_naissance_mois);
+        strcat(date_de_naissance,"/");
+        strcat(date_de_naissance,date_de_naissance_annee);
 
-    	// Get lieu de naissance
-    	char lieu_de_naissance [100];
-    	entry_get_value(interface, "lieu_de_naissance_entry", lieu_de_naissance);
+        // Get lieu de naissance
+        char lieu_de_naissance [100];
+        entry_get_value(interface, "lieu_de_naissance_entry", lieu_de_naissance);
 
-    	// Get genre
-    	int  genre_radio_button_value = radio_button_get_value(interface, "genre_homme_button");
-    	char genre [100];
+        // Get genre
+        int  genre_radio_button_value = radio_button_get_value(interface, "genre_homme_button");
+        char genre [100];
 
-    	if(genre_radio_button_value == 1)
-    	{
-    	strcpy(genre,"homme");
-    	}else
-    	{
-    	strcpy(genre,"femme");
-    	}
+        if(genre_radio_button_value == 1)
+        {
+        strcpy(genre,"homme");
+        }else
+        {
+        strcpy(genre,"femme");
+        }
 
-    	// Get statut social
-    	char statut_social [100];
-    	combo_box_get_value(interface, "statut_social_entry", statut_social);
+        // Get statut social
+        char statut_social [100];
+        combo_box_get_value(interface, "statut_social_entry", statut_social);
 
-    	// Get addresse
-    	char addresse [100];
-    	entry_get_value(interface, "adresse_entry", addresse);
+        // Get addresse
+        char addresse [100];
+        entry_get_value(interface, "adresse_entry", addresse);
 
-    	// Get code postal
-    	char code_postal [100];
-    	entry_get_value(interface, "code_postal_entry", code_postal);
+        // Get code postal
+        char code_postal [100];
+        entry_get_value(interface, "code_postal_entry", code_postal);
 
-    	// Get gouvernorat
-    	char gouvernorat [100];
-    	combo_box_get_value(interface, "gouvernorat_entry", gouvernorat);
+        // Get gouvernorat
+        char gouvernorat [100];
+        combo_box_get_value(interface, "gouvernorat_entry", gouvernorat);
 
         // Get role
         char role [100];
@@ -485,12 +485,12 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
         char bureau_de_vote [100];
         combo_box_get_value(interface, "bureau_de_vote_entry", bureau_de_vote);
 
-    	//get email
-    	char email [100];
+        //get email
+        char email [100];
         entry_get_value(interface, "email_entry", email);
 
         //get profession
-    	char profession [100];
+        char profession [100];
         entry_get_value(interface, "profession_entry", profession);
 
         // Get bureau de vote
@@ -501,10 +501,9 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
         Search_criteria criterias [1];
         strcpy(criterias[0].key , "identifiant");
         strcpy(criterias[0].value , identifiant);
-
         User old_user = chercher(criterias);
         User new_user ;
-        strcpy(new_user.identifiant , old_user.identifiant);
+        strcpy(new_user.identifiant , identifiant);
         strcpy(new_user.nom , nom);
         strcpy(new_user.prenom , prenom);
         strcpy(new_user.date_de_naissance , date_de_naissance);
@@ -524,6 +523,122 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
         char * message = modifier(identifiant, new_user);
 
         label_set_value(interface, "message_label", message);
+
+}
+
+void
+on_inscription_button_connexion_fenetre_clicked
+                                        (GtkWidget *interface,
+                                        gpointer         user_data)
+{
+  GtkWidget * connexion_fenetre;
+  GtkWidget * inscription_fenetre;
+  connexion_fenetre = lookup_widget(interface, "connexion");
+  gtk_widget_hide (connexion_fenetre);
+  inscription_fenetre = create_inscription ();
+  gtk_widget_show (inscription_fenetre);
+}
+
+void
+on_mot_de_passe_oublie_button_connexion_fenetre_clicked
+                                        (GtkWidget *interface,
+                                        gpointer         user_data)
+{
+  GtkWidget * connexion_fenetre;
+  GtkWidget * mot_de_passe_oublie_fenetre;
+  connexion_fenetre = lookup_widget(interface, "connexion");
+  gtk_widget_hide (connexion_fenetre);
+  mot_de_passe_oublie_fenetre = create_mot_de_passe_oublie ();
+  gtk_widget_show (mot_de_passe_oublie_fenetre);
+}
+
+void
+on_connexion_button_inscription_fenetre_clicked
+                                        (GtkWidget *interface,
+                                        gpointer         user_data)
+{
+  GtkWidget * connexion_fenetre;
+  GtkWidget * inscription_fenetre;
+  inscription_fenetre = lookup_widget(interface, "inscription");
+  gtk_widget_hide (inscription_fenetre);
+  connexion_fenetre = create_connexion ();
+  gtk_widget_show (connexion_fenetre);
+}
+
+void
+on_connexion_button_mot_de_passe_oublie_clicked
+                                        (GtkWidget *interface,
+                                        gpointer         user_data)
+{
+  GtkWidget * connexion_fenetre;
+  GtkWidget * mot_de_passe_oublie_fenetre;
+  mot_de_passe_oublie_fenetre = lookup_widget(interface, "mot_de_passe_oublie");
+  gtk_widget_hide (mot_de_passe_oublie_fenetre);
+  connexion_fenetre = create_connexion ();
+  gtk_widget_show (connexion_fenetre);
+}
+
+
+void
+on_annuler_supprimer_utilisateur_button_clicked   (GtkWidget *interface,
+                                                   gpointer   user_data)
+{
+
+
+}
+
+
+void
+on_confirmer_supprimer_utilisateur_button_clicked    (GtkWidget *interface,
+                                                      gpointer   user_data)
+{
+          // Get identifiant
+          char identifiant [100];
+          entry_get_value(interface, "identifiant_entry", identifiant);
+
+          // Get message
+          char * message = supprimer(identifiant);
+
+          label_set_value(interface, "message_label", message);
+
+}
+
+
+
+
+void
+on_Accueil_Gestion_des_utilisateurs_button_clicked
+                                        (GtkWidget *interface,
+                                        gpointer         user_data)
+{
+
+
+}
+
+
+void
+on_supprimer_utilisateur_gestion_utilisateur_button_clicked
+                                        (GtkWidget *interface,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_modifier_utilisateur_Gestion_des_utilisateurs_button_clicked
+                                        (GtkWidget *interface,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_Ajout_utilisateur_Gestion_des_utilisateurs_button_clicked
+                                        (GtkWidget *interface,
+                                        gpointer         user_data)
+{
 
 }
 
