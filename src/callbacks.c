@@ -10,7 +10,6 @@
 #include "support.h"
 #include "user.h"
 #include "widget.h"
-#include "search_criteria.h"
 #include "password.h"
 
 void
@@ -136,11 +135,12 @@ on_se_connecter_button_clicked         (GtkWidget *interface,
 
 	label_set_value(interface, "message_label", message);
 
-	// attendre 2 secondes
-    sleep(2);
 
 	// redirection vers la page d'accueil apres 2 secondes d'attente
 	if(strcmp(message,  "Connexion avec succès !") == 0 ){
+	    // attendre 2 secondes
+        sleep(2);
+
 	  GtkWidget * connexion_fenetre;
       GtkWidget * accueil_fenetre;
       connexion_fenetre = lookup_widget(interface, "connexion");
@@ -271,12 +271,11 @@ void on_mes_informations_sauvgarder_button_clicked
 
 
         //get message
-        Search_criteria criterias [1];
-        strcpy(criterias[0].key , "identifiant");
-        strcpy(criterias[0].value , identifiant);
+        char * criterias_keys[] =  { "identifiant"};
+        char * criterias_values[] = { identifiant };
 
+        User old_user = chercher(criterias_keys, criterias_values, 1);
 
-        User old_user = chercher(criterias);
         User new_user;
         strcpy(new_user.identifiant , old_user.identifiant);
         strcpy(new_user.nom , nom);
@@ -511,10 +510,11 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
         combo_box_get_value(interface, "liste_electorale_entry", liste_electorale);
 
         // Get message
-        Search_criteria criterias [1];
-        strcpy(criterias[0].key , "identifiant");
-        strcpy(criterias[0].value , identifiant);
-        User old_user = chercher(criterias);
+         char * criterias_keys[] =  { "identifiant"};
+         char * criterias_values[] = { identifiant };
+
+        User old_user = chercher(criterias_keys, criterias_values, 1);
+
         User new_user ;
         strcpy(new_user.identifiant , identifiant);
         strcpy(new_user.nom , nom);

@@ -35,7 +35,6 @@ create_connexion (void)
   GtkWidget *mot_de_passe_entry;
   GtkWidget *label790;
   GtkWidget *identifiant_label;
-  GtkWidget *message_label;
   GtkWidget *mot_de_passe_label;
   GtkWidget *mot_de_passe_oublie_button_connexion_fenetre;
   GtkWidget *se_connecter_button;
@@ -44,6 +43,7 @@ create_connexion (void)
   GtkWidget *image218;
   GtkWidget *label793;
   GtkWidget *inscription_button_connexion_fenetre;
+  GtkWidget *message_label;
 
   connexion = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (connexion), _("connexion "));
@@ -73,11 +73,6 @@ create_connexion (void)
   gtk_widget_show (identifiant_label);
   gtk_fixed_put (GTK_FIXED (fixed72), identifiant_label, 0, 115);
   gtk_widget_set_size_request (identifiant_label, 102, 16);
-
-  message_label = gtk_label_new ("");
-  gtk_widget_show (message_label);
-  gtk_fixed_put (GTK_FIXED (fixed72), message_label, 8, 48);
-  gtk_widget_set_size_request (message_label, 440, 48);
 
   mot_de_passe_label = gtk_label_new (_("mot de passe  "));
   gtk_widget_show (mot_de_passe_label);
@@ -122,6 +117,11 @@ create_connexion (void)
   gtk_button_set_relief (GTK_BUTTON (inscription_button_connexion_fenetre), GTK_RELIEF_NONE);
   gtk_button_set_focus_on_click (GTK_BUTTON (inscription_button_connexion_fenetre), FALSE);
 
+  message_label = gtk_label_new ("");
+  gtk_widget_show (message_label);
+  gtk_fixed_put (GTK_FIXED (fixed72), message_label, 8, 48);
+  gtk_widget_set_size_request (message_label, 440, 48);
+
   g_signal_connect ((gpointer) mot_de_passe_oublie_button_connexion_fenetre, "clicked",
                     G_CALLBACK (on_mot_de_passe_oublie_button_connexion_fenetre_clicked),
                     NULL);
@@ -139,7 +139,6 @@ create_connexion (void)
   GLADE_HOOKUP_OBJECT (connexion, mot_de_passe_entry, "mot_de_passe_entry");
   GLADE_HOOKUP_OBJECT (connexion, label790, "label790");
   GLADE_HOOKUP_OBJECT (connexion, identifiant_label, "identifiant_label");
-  GLADE_HOOKUP_OBJECT (connexion, message_label, "message_label");
   GLADE_HOOKUP_OBJECT (connexion, mot_de_passe_label, "mot_de_passe_label");
   GLADE_HOOKUP_OBJECT (connexion, mot_de_passe_oublie_button_connexion_fenetre, "mot_de_passe_oublie_button_connexion_fenetre");
   GLADE_HOOKUP_OBJECT (connexion, se_connecter_button, "se_connecter_button");
@@ -148,6 +147,7 @@ create_connexion (void)
   GLADE_HOOKUP_OBJECT (connexion, image218, "image218");
   GLADE_HOOKUP_OBJECT (connexion, label793, "label793");
   GLADE_HOOKUP_OBJECT (connexion, inscription_button_connexion_fenetre, "inscription_button_connexion_fenetre");
+  GLADE_HOOKUP_OBJECT (connexion, message_label, "message_label");
 
   return connexion;
 }
@@ -183,7 +183,6 @@ create_inscription (void)
   GtkWidget *label800;
   GtkWidget *label801;
   GtkWidget *label802;
-  GtkWidget *gouvernorat_entry;
   GtkWidget *label803;
   GtkWidget *label805;
   GtkWidget *label804;
@@ -198,6 +197,7 @@ create_inscription (void)
   GtkWidget *label794;
   GtkWidget *label806;
   GtkWidget *message_label;
+  GtkWidget *gouvernorat_entry;
 
   inscription = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (inscription), _("inscription "));
@@ -334,35 +334,6 @@ create_inscription (void)
   gtk_fixed_put (GTK_FIXED (fixed73), label802, 184, 448);
   gtk_widget_set_size_request (label802, 104, 24);
 
-  gouvernorat_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (gouvernorat_entry);
-  gtk_fixed_put (GTK_FIXED (fixed73), gouvernorat_entry, 184, 472);
-  gtk_widget_set_size_request (gouvernorat_entry, 189, 30);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ariana ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "B\303\250ja ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ben Arous ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Bizerte ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gab\303\250s ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gafsa ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Jendouba ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kairouan ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kasserine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "K\303\251bili");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "La Manouba ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Le Kef ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Mahdia ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Medenine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Monastir ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Nabeul ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sfax ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sidi Bouzid ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Siliana ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sousse ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tataouine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tozeur ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tunis ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Zaghouan ");
-
   label803 = gtk_label_new (_("EMAIL"));
   gtk_widget_show (label803);
   gtk_fixed_put (GTK_FIXED (fixed73), label803, 8, 528);
@@ -432,6 +403,35 @@ create_inscription (void)
   gtk_fixed_put (GTK_FIXED (fixed73), message_label, 8, 56);
   gtk_widget_set_size_request (message_label, 370, 59);
 
+  gouvernorat_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (gouvernorat_entry);
+  gtk_fixed_put (GTK_FIXED (fixed73), gouvernorat_entry, 184, 472);
+  gtk_widget_set_size_request (gouvernorat_entry, 189, 30);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ariana");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "B\303\250ja");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ben Arous");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Bizerte");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gab\303\250s");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gafsa");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Jendouba");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kairouan");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kasserine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "K\303\251bili");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "La Manouba");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Le Kef");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Mahdia");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Medenine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Monastir");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Nabeul");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sfax");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sidi Bouzid");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Siliana");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sousse");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tataouine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tozeur");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tunis");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Zaghouan");
+
   g_signal_connect ((gpointer) sincrire_button, "clicked",
                     G_CALLBACK (on_sincrire_button_clicked),
                     NULL);
@@ -464,7 +464,6 @@ create_inscription (void)
   GLADE_HOOKUP_OBJECT (inscription, label800, "label800");
   GLADE_HOOKUP_OBJECT (inscription, label801, "label801");
   GLADE_HOOKUP_OBJECT (inscription, label802, "label802");
-  GLADE_HOOKUP_OBJECT (inscription, gouvernorat_entry, "gouvernorat_entry");
   GLADE_HOOKUP_OBJECT (inscription, label803, "label803");
   GLADE_HOOKUP_OBJECT (inscription, label805, "label805");
   GLADE_HOOKUP_OBJECT (inscription, label804, "label804");
@@ -479,6 +478,7 @@ create_inscription (void)
   GLADE_HOOKUP_OBJECT (inscription, label794, "label794");
   GLADE_HOOKUP_OBJECT (inscription, label806, "label806");
   GLADE_HOOKUP_OBJECT (inscription, message_label, "message_label");
+  GLADE_HOOKUP_OBJECT (inscription, gouvernorat_entry, "gouvernorat_entry");
 
   return inscription;
 }
@@ -2499,8 +2499,8 @@ create_gestion_utilisateur (void)
 
   treeview1 = gtk_tree_view_new ();
   gtk_widget_show (treeview1);
-  gtk_fixed_put (GTK_FIXED (fixed83), treeview1, 16, 248);
-  gtk_widget_set_size_request (treeview1, 816, 248);
+  gtk_fixed_put (GTK_FIXED (fixed83), treeview1, 40, 264);
+  gtk_widget_set_size_request (treeview1, 728, 200);
 
   label886 = gtk_label_new (_("Gestion des utilisateurs "));
   gtk_widget_show (label886);
@@ -2676,11 +2676,6 @@ create_ajout_utilisateur (void)
   GtkWidget *genre_homme_button;
   GSList *genre_homme_button_group = NULL;
   GtkWidget *genre_femme_button;
-  GtkWidget *statut_social_entry;
-  GtkWidget *gouvernorat_entry;
-  GtkWidget *role_entry;
-  GtkWidget *bureau_de_vote_entry;
-  GtkWidget *liste_electorale_entry;
   GtkWidget *gestion_utilisateur_button_ajout_utilisateur_fenetre;
   GtkWidget *alignment408;
   GtkWidget *hbox408;
@@ -2688,6 +2683,11 @@ create_ajout_utilisateur (void)
   GtkWidget *label1246;
   GtkWidget *label909;
   GtkWidget *message_label;
+  GtkWidget *statut_social_entry;
+  GtkWidget *gouvernorat_entry;
+  GtkWidget *role_entry;
+  GtkWidget *bureau_de_vote_entry;
+  GtkWidget *liste_electorale_entry;
 
   ajout_utilisateur = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (ajout_utilisateur), _("Ajout utilisateur "));
@@ -2875,63 +2875,6 @@ create_ajout_utilisateur (void)
   genre_homme_button_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (genre_femme_button));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (genre_femme_button), TRUE);
 
-  statut_social_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (statut_social_entry);
-  gtk_fixed_put (GTK_FIXED (fixed84), statut_social_entry, 312, 424);
-  gtk_widget_set_size_request (statut_social_entry, 311, 29);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("celebataire"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("marri\303\251(e)"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("devorc\303\251(e)"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("veuf(ve)"));
-
-  gouvernorat_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (gouvernorat_entry);
-  gtk_fixed_put (GTK_FIXED (fixed84), gouvernorat_entry, 320, 576);
-  gtk_widget_set_size_request (gouvernorat_entry, 308, 32);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ariana ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "B\303\250ja ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ben Arous ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Bizerte ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gab\303\250s ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gafsa ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Jendouba ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kairouan ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kasserine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "K\303\251bili");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "La Manouba ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Le Kef ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Mahdia ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Medenine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Monastir ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Nabeul ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sfax ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sidi Bouzid ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Siliana ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sousse ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tataouine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tozeur ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tunis ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Zaghouan ");
-
-  role_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (role_entry);
-  gtk_fixed_put (GTK_FIXED (fixed84), role_entry, 8, 640);
-  gtk_widget_set_size_request (role_entry, 261, 32);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("electeur"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("agent de bureau de vote "));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("observateur "));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("conseiller"));
-
-  bureau_de_vote_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (bureau_de_vote_entry);
-  gtk_fixed_put (GTK_FIXED (fixed84), bureau_de_vote_entry, 328, 640);
-  gtk_widget_set_size_request (bureau_de_vote_entry, 293, 32);
-
-  liste_electorale_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (liste_electorale_entry);
-  gtk_fixed_put (GTK_FIXED (fixed84), liste_electorale_entry, 8, 776);
-  gtk_widget_set_size_request (liste_electorale_entry, 275, 36);
-
   gestion_utilisateur_button_ajout_utilisateur_fenetre = gtk_button_new ();
   gtk_widget_show (gestion_utilisateur_button_ajout_utilisateur_fenetre);
   gtk_fixed_put (GTK_FIXED (fixed84), gestion_utilisateur_button_ajout_utilisateur_fenetre, 16, 64);
@@ -2962,6 +2905,63 @@ create_ajout_utilisateur (void)
   gtk_widget_show (message_label);
   gtk_fixed_put (GTK_FIXED (fixed84), message_label, 8, 104);
   gtk_widget_set_size_request (message_label, 608, 40);
+
+  statut_social_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (statut_social_entry);
+  gtk_fixed_put (GTK_FIXED (fixed84), statut_social_entry, 312, 424);
+  gtk_widget_set_size_request (statut_social_entry, 311, 29);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("celebataire"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("marri\303\251(e)"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("devorc\303\251(e)"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("veuf(ve)"));
+
+  gouvernorat_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (gouvernorat_entry);
+  gtk_fixed_put (GTK_FIXED (fixed84), gouvernorat_entry, 320, 576);
+  gtk_widget_set_size_request (gouvernorat_entry, 308, 32);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ariana");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "B\303\250ja");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ben Arous");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Bizerte");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gab\303\250s");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gafsa");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Jendouba");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kairouan");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kasserine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "K\303\251bili");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "La Manouba");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Le Kef");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Mahdia");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Medenine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Monastir");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Nabeul");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sfax");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sidi Bouzid");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Siliana");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sousse");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tataouine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tozeur");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tunis");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Zaghouan");
+
+  role_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (role_entry);
+  gtk_fixed_put (GTK_FIXED (fixed84), role_entry, 8, 640);
+  gtk_widget_set_size_request (role_entry, 261, 32);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("electeur"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("agent de bureau de vote "));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("observateur "));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("conseiller"));
+
+  bureau_de_vote_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (bureau_de_vote_entry);
+  gtk_fixed_put (GTK_FIXED (fixed84), bureau_de_vote_entry, 328, 640);
+  gtk_widget_set_size_request (bureau_de_vote_entry, 293, 32);
+
+  liste_electorale_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (liste_electorale_entry);
+  gtk_fixed_put (GTK_FIXED (fixed84), liste_electorale_entry, 8, 776);
+  gtk_widget_set_size_request (liste_electorale_entry, 275, 36);
 
   g_signal_connect ((gpointer) ajout_utilisateur_sauvegarder_button, "clicked",
                     G_CALLBACK (on_ajout_utilisateur_sauvegarder_button_clicked),
@@ -3006,11 +3006,6 @@ create_ajout_utilisateur (void)
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, date_de_naissance_mois_button, "date_de_naissance_mois_button");
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, genre_homme_button, "genre_homme_button");
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, genre_femme_button, "genre_femme_button");
-  GLADE_HOOKUP_OBJECT (ajout_utilisateur, statut_social_entry, "statut_social_entry");
-  GLADE_HOOKUP_OBJECT (ajout_utilisateur, gouvernorat_entry, "gouvernorat_entry");
-  GLADE_HOOKUP_OBJECT (ajout_utilisateur, role_entry, "role_entry");
-  GLADE_HOOKUP_OBJECT (ajout_utilisateur, bureau_de_vote_entry, "bureau_de_vote_entry");
-  GLADE_HOOKUP_OBJECT (ajout_utilisateur, liste_electorale_entry, "liste_electorale_entry");
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, gestion_utilisateur_button_ajout_utilisateur_fenetre, "gestion_utilisateur_button_ajout_utilisateur_fenetre");
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, alignment408, "alignment408");
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, hbox408, "hbox408");
@@ -3018,6 +3013,11 @@ create_ajout_utilisateur (void)
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, label1246, "label1246");
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, label909, "label909");
   GLADE_HOOKUP_OBJECT (ajout_utilisateur, message_label, "message_label");
+  GLADE_HOOKUP_OBJECT (ajout_utilisateur, statut_social_entry, "statut_social_entry");
+  GLADE_HOOKUP_OBJECT (ajout_utilisateur, gouvernorat_entry, "gouvernorat_entry");
+  GLADE_HOOKUP_OBJECT (ajout_utilisateur, role_entry, "role_entry");
+  GLADE_HOOKUP_OBJECT (ajout_utilisateur, bureau_de_vote_entry, "bureau_de_vote_entry");
+  GLADE_HOOKUP_OBJECT (ajout_utilisateur, liste_electorale_entry, "liste_electorale_entry");
 
   return ajout_utilisateur;
 }
@@ -3045,7 +3045,6 @@ create_modification_utlisateur (void)
   GtkWidget *date_de_naissance_mois_button;
   GtkObject *date_de_naissance_annee_button_adj;
   GtkWidget *date_de_naissance_annee_button;
-  GtkWidget *label925;
   GtkWidget *label916;
   GtkWidget *genre_femme_button;
   GSList *genre_femme_button_group = NULL;
@@ -3060,9 +3059,6 @@ create_modification_utlisateur (void)
   GtkWidget *liste_electorale_label;
   GtkWidget *label920;
   GtkWidget *genre_homme_button;
-  GtkWidget *statut_social_entry;
-  GtkWidget *gouvernorat_entry;
-  GtkWidget *role_entry;
   GtkWidget *bureau_de_vote_entry;
   GtkWidget *liste_electorale_entry;
   GtkWidget *modifier_utilisateur_sauvegarder_button;
@@ -3077,6 +3073,10 @@ create_modification_utlisateur (void)
   GtkWidget *hbox409;
   GtkWidget *image440;
   GtkWidget *label1247;
+  GtkWidget *label925;
+  GtkWidget *statut_social_entry;
+  GtkWidget *gouvernorat_entry;
+  GtkWidget *role_entry;
 
   modification_utlisateur = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (modification_utlisateur), _("modification utilisateur "));
@@ -3175,11 +3175,6 @@ create_modification_utlisateur (void)
   gtk_fixed_put (GTK_FIXED (fixed85), date_de_naissance_annee_button, 152, 360);
   gtk_widget_set_size_request (date_de_naissance_annee_button, 60, 27);
 
-  label925 = gtk_label_new (_("statut social"));
-  gtk_widget_show (label925);
-  gtk_fixed_put (GTK_FIXED (fixed85), label925, 312, 400);
-  gtk_widget_set_size_request (label925, 120, 16);
-
   label916 = gtk_label_new (_("genre "));
   gtk_widget_show (label916);
   gtk_fixed_put (GTK_FIXED (fixed85), label916, 0, 400);
@@ -3252,53 +3247,6 @@ create_modification_utlisateur (void)
   genre_femme_button_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (genre_homme_button));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (genre_homme_button), TRUE);
 
-  statut_social_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (statut_social_entry);
-  gtk_fixed_put (GTK_FIXED (fixed85), statut_social_entry, 312, 424);
-  gtk_widget_set_size_request (statut_social_entry, 311, 29);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("celebataire"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("marri\303\251(e)"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("devorc\303\251(e)"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("veuf(ve)"));
-
-  gouvernorat_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (gouvernorat_entry);
-  gtk_fixed_put (GTK_FIXED (fixed85), gouvernorat_entry, 320, 568);
-  gtk_widget_set_size_request (gouvernorat_entry, 303, 40);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ariana ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "B\303\250ja ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ben Arous ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Bizerte ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gab\303\250s ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gafsa ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Jendouba ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kairouan ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kasserine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "K\303\251bili");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "La Manouba ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Le Kef ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Mahdia ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Medenine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Monastir ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Nabeul ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sfax ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sidi Bouzid ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Siliana ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sousse ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tataouine ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tozeur ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tunis ");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Zaghouan ");
-
-  role_entry = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (role_entry);
-  gtk_fixed_put (GTK_FIXED (fixed85), role_entry, 8, 640);
-  gtk_widget_set_size_request (role_entry, 285, 32);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("electeur"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("agent de bureau de vote "));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("observateur "));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("conseiller"));
-
   bureau_de_vote_entry = gtk_combo_box_entry_new_text ();
   gtk_widget_show (bureau_de_vote_entry);
   gtk_fixed_put (GTK_FIXED (fixed85), bureau_de_vote_entry, 328, 640);
@@ -3361,6 +3309,58 @@ create_modification_utlisateur (void)
   gtk_widget_show (label1247);
   gtk_box_pack_start (GTK_BOX (hbox409), label1247, FALSE, FALSE, 0);
 
+  label925 = gtk_label_new (_("statut social"));
+  gtk_widget_show (label925);
+  gtk_fixed_put (GTK_FIXED (fixed85), label925, 312, 400);
+  gtk_widget_set_size_request (label925, 120, 16);
+
+  statut_social_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (statut_social_entry);
+  gtk_fixed_put (GTK_FIXED (fixed85), statut_social_entry, 312, 424);
+  gtk_widget_set_size_request (statut_social_entry, 311, 29);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("celebataire"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("marri\303\251(e)"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("devorc\303\251(e)"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (statut_social_entry), _("veuf(ve)"));
+
+  gouvernorat_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (gouvernorat_entry);
+  gtk_fixed_put (GTK_FIXED (fixed85), gouvernorat_entry, 320, 568);
+  gtk_widget_set_size_request (gouvernorat_entry, 303, 40);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ariana");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "B\303\250ja");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Ben Arous");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Bizerte");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gab\303\250s");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Gafsa");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Jendouba");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kairouan");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Kasserine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "K\303\251bili");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "La Manouba");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Le Kef");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Mahdia");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Medenine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Monastir");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Nabeul");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sfax");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sidi Bouzid");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Siliana");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Sousse");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tataouine");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tozeur");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Tunis");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (gouvernorat_entry), "Zaghouan");
+
+  role_entry = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (role_entry);
+  gtk_fixed_put (GTK_FIXED (fixed85), role_entry, 8, 640);
+  gtk_widget_set_size_request (role_entry, 285, 32);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("electeur"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("agent de bureau de vote"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("observateur"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (role_entry), _("conseiller"));
+
   g_signal_connect ((gpointer) modifier_utilisateur_sauvegarder_button, "clicked",
                     G_CALLBACK (on_modifier_utilisateur_sauvegarder_button_clicked),
                     NULL);
@@ -3386,7 +3386,6 @@ create_modification_utlisateur (void)
   GLADE_HOOKUP_OBJECT (modification_utlisateur, date_de_naissance_jour_button, "date_de_naissance_jour_button");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, date_de_naissance_mois_button, "date_de_naissance_mois_button");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, date_de_naissance_annee_button, "date_de_naissance_annee_button");
-  GLADE_HOOKUP_OBJECT (modification_utlisateur, label925, "label925");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, label916, "label916");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, genre_femme_button, "genre_femme_button");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, label922, "label922");
@@ -3400,9 +3399,6 @@ create_modification_utlisateur (void)
   GLADE_HOOKUP_OBJECT (modification_utlisateur, liste_electorale_label, "liste_electorale_label");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, label920, "label920");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, genre_homme_button, "genre_homme_button");
-  GLADE_HOOKUP_OBJECT (modification_utlisateur, statut_social_entry, "statut_social_entry");
-  GLADE_HOOKUP_OBJECT (modification_utlisateur, gouvernorat_entry, "gouvernorat_entry");
-  GLADE_HOOKUP_OBJECT (modification_utlisateur, role_entry, "role_entry");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, bureau_de_vote_entry, "bureau_de_vote_entry");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, liste_electorale_entry, "liste_electorale_entry");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, modifier_utilisateur_sauvegarder_button, "modifier_utilisateur_sauvegarder_button");
@@ -3417,6 +3413,10 @@ create_modification_utlisateur (void)
   GLADE_HOOKUP_OBJECT (modification_utlisateur, hbox409, "hbox409");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, image440, "image440");
   GLADE_HOOKUP_OBJECT (modification_utlisateur, label1247, "label1247");
+  GLADE_HOOKUP_OBJECT (modification_utlisateur, label925, "label925");
+  GLADE_HOOKUP_OBJECT (modification_utlisateur, statut_social_entry, "statut_social_entry");
+  GLADE_HOOKUP_OBJECT (modification_utlisateur, gouvernorat_entry, "gouvernorat_entry");
+  GLADE_HOOKUP_OBJECT (modification_utlisateur, role_entry, "role_entry");
 
   return modification_utlisateur;
 }

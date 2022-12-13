@@ -2,66 +2,64 @@
 #include <string.h>
 
 #include "user.h"
-#include "search_criteria.h"
 
-void getFieldValue(User u , char key [], char user_value []){
+void getFieldValue(User u , char * key [], char * user_value []){
             if(strcmp(key, "identifiant") == 0){
                 strcpy(user_value, u.identifiant);
             }
-            if(strcmp(key, "nom") == 0){
+            else if(strcmp(key, "nom") == 0){
                 strcpy(user_value, u.nom);
 
             }
-            if(strcmp(key, "prenom") == 0){
+            else if(strcmp(key, "prenom") == 0){
                 strcpy(user_value, u.prenom);
             }
-            if(strcmp(key, "date_de_naissance") == 0){
+            else if(strcmp(key, "date_de_naissance") == 0){
                 strcpy(user_value, u.date_de_naissance);
             }
-            if(strcmp(key, "lieu_de_naissance") == 0){
+            else if(strcmp(key, "lieu_de_naissance") == 0){
                 strcpy(user_value, u.lieu_de_naissance);
             }
-            if(strcmp(key, "genre") == 0){
+            else if(strcmp(key, "genre") == 0){
                 strcpy(user_value, u.genre);
             }
-            if(strcmp(key, "statut_social") == 0){
+            else if(strcmp(key, "statut_social") == 0){
                 strcpy(user_value, u.statut_social);
             }
-            if(strcmp(key, "addresse") == 0){
+            else if(strcmp(key, "addresse") == 0){
                 strcpy(user_value, u.addresse);
             }
-            if(strcmp(key, "code_postal") == 0){
+            else if(strcmp(key, "code_postal") == 0){
                 strcpy(user_value, u.code_postal);
             }
-            if(strcmp(key, "gouvernorat") == 0){
+            else if(strcmp(key, "gouvernorat") == 0){
                 strcpy(user_value, u.gouvernorat);
             }
-            if(strcmp(key, "email") == 0){
+            else if(strcmp(key, "email") == 0){
                strcpy(user_value, u.email);
             }
-            if(strcmp(key, "mot_de_passe") == 0){
+            else if(strcmp(key, "mot_de_passe") == 0){
                 strcpy(user_value, u.mot_de_passe);
             }
-            if(strcmp(key, "bureau_de_vote") == 0){
+            else if(strcmp(key, "bureau_de_vote") == 0){
                 strcpy(user_value, u.bureau_de_vote);
             }
-            if(strcmp(key, "role") == 0){
+            else if(strcmp(key, "role") == 0){
                 strcpy(user_value, u.role);
             }
-            if(strcmp(key, "profession") == 0){
+            else if(strcmp(key, "profession") == 0){
                 strcpy(user_value, u.profession);
             }
-            if(strcmp(key, "liste_electorale") == 0){
+            else if(strcmp(key, "liste_electorale") == 0){
                 strcpy(user_value, u.liste_electorale);
             }
 }
 char *  ajouter(User user_to_add, char file_name[]){
     // on veut chercher si un utilisateur existe avec le meme identifiant de user_to_add
-    Search_criteria criterias [1];
-    strcpy(criterias[0].key, "identifiant");
-    strcpy(criterias[0].value, user_to_add.identifiant);
+     char * criterias_keys[] =  { "identifiant"};
+     char * criterias_values[] = { user_to_add.identifiant };
 
-    User searched_user = chercher(criterias);
+    User searched_user = chercher(criterias_keys, criterias_values, 1);
     // si un utilsateur avec le meme identifiant existe => message : L'utilisateur existe déja
     if (strcmp(searched_user.identifiant,"-1") != 0)
     {
@@ -119,7 +117,7 @@ char * modifier(char identifiant [],
     }
 }
 
-User chercher(Search_criteria criterias []){
+User chercher(char * criterias_keys [], char * criterias_values [], int criterias_length){
     // parcours du fichiers users.txt
     User u;
     int trouver = 0;
@@ -136,24 +134,21 @@ User chercher(Search_criteria criterias []){
             // verfier si la ligne courrante correspondant à l'identifiant et à la date de naissance donnée
             int i = 0;
             int do_match = 1;
-            int total_length = sizeof criterias / sizeof *criterias;;
-                    FILE *debug_file = fopen("debug_file.txt", "a");
-                    fprintf(debug_file, "%d %s %s \n", total_length, criterias[0].key,  criterias[0].value);
-                    fclose(debug_file);
-            while(do_match == 1 && i < total_length)
+            while(do_match == 1 && i < criterias_length)
             {
-                    Search_criteria criteria = criterias[i];
+                    char * criteriaKey = criterias_keys[i];
+                    char * criteriaValue = criterias_values[i];
+
                     char userValue [20];
-                    getFieldValue(u, criteria.key, userValue);
-                    if(strcmp(criteria.value , userValue) != 0)
+                    getFieldValue(u, criteriaKey, userValue);
+                    if(strcmp(criteriaValue , userValue) != 0)
                     {
                     do_match = 0;
                     }
-                   else
-                   {
-                        i++;
-                   }
+                     i++;
             }
+
+
             if(do_match == 1)
             {
                 trouver = 1;
@@ -161,6 +156,10 @@ User chercher(Search_criteria criterias []){
         }
         fclose(file);
     }
+   FILE *debug_file = fopen("debug_file.txt", "a");
+   fprintf(debug_file, "trouver: %d\n",
+                        trouver);
+   fclose(debug_file);
     // si l'utilisateur existe => retourner l'utilisateur trouvé
     if(trouver == 1 ) {
         return u;
@@ -173,23 +172,22 @@ User chercher(Search_criteria criterias []){
 }
 
 char *  sinscrire(User u){
-    ajouter(u, "users.txt");
-    return "Inscription avec succès !";
+    char * message = ajouter(u, "users.txt");
+    if(strcmp(message, "L'utilisateur a été ajouté avec succès !") == 0){
+         return "Inscription avec succès !";
+    }
+    return message;
  }
 
 
 char * se_connecter(char identifiant [], char mot_de_passe [])
 {
-    Search_criteria criterias [2];
-    strcpy(criterias[0].key , "identifiant");
-    strcpy(criterias[0].value , identifiant);
+    char * criterias_keys[] =  { "identifiant", "mot_de_passe"};
+    char * criterias_values[] = { identifiant, mot_de_passe };
+    
+    User u = chercher(criterias_keys, criterias_values, 2);
 
-    strcpy(criterias[1].key , "mot_de_passe");
-    strcpy(criterias[1].value , mot_de_passe);
-
-	User u = chercher(criterias);
-
-	if(strcpy(u.identifiant, "-1") == 0)
+	if(strcmp(u.identifiant, "-1") == 0)
 	{
 	return "Identifiant(s) incorrect(s) !";
 	}
@@ -206,14 +204,11 @@ char *	reinitialiser_mot_de_passe(char identifiant [],
                                     char mot_de_passe [],
                                     char confirmer_mot_de_passe []){
     // chercher un utilsateur correspondant à l'identifiant et à la date de naissance saisies
-        Search_criteria criterias [2];
-        strcpy(criterias[0].key , "identifiant");
-        strcpy(criterias[0].value , identifiant);
-
-        strcpy(criterias[1].key , "date_de_naissance");
-        strcpy(criterias[1].value , date_de_naissance);
-
-        User old_user = chercher(criterias);
+       
+    char * criterias_keys[] =  { "identifiant", "date_de_naissance"};
+    char * criterias_values[] = { identifiant, date_de_naissance };
+    
+    User old_user = chercher(criterias_keys, criterias_values, 2);
     // si utilisateur existe => alors modifier l'ancien mot de passe par le nouveau et on retourne un message de succès
     if(strcmp(old_user.identifiant, "-1") != 0){
         // modifier l'ancien mot de passe par le nouveau
@@ -234,11 +229,10 @@ char *	reinitialiser_mot_de_passe(char identifiant [],
 char * supprimer (char identifiant [])
 {
     // chercher un utilisateur dont l'identifiant est celui saisie dans l'interface
-    Search_criteria criterias [1];
-    strcpy(criterias[0].key, "identifiant");
-    strcpy(criterias[0].value, identifiant);
+    char * criterias_keys[] =  { "identifiant"};
+    char * criterias_values[] = { identifiant };
 
-    User user_to_delete = chercher(criterias);
+    User user_to_delete = chercher(criterias_keys, criterias_values, 1);
 
     // si l'utilisateur exitse => on le supprime du fichier users.txt + message : Suppression avec succèes
     if(strcmp(user_to_delete.identifiant, '-1') != 0){

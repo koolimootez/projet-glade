@@ -13,7 +13,6 @@ projet_SOURCES = \
 	interface.c interface.h \
 	callbacks.c callbacks.h \
 	widget.c widget.h \
-	search_criteria.h \
 	password.c password.h \
 	user.c user.h
 

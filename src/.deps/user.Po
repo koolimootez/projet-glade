@@ -22,8 +22,7 @@ user.o: user.c /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
- /usr/include/x86_64-linux-gnu/bits/string_fortified.h user.h \
- search_criteria.h
+ /usr/include/x86_64-linux-gnu/bits/string_fortified.h user.h
 
 /usr/include/stdc-predef.h:
 
@@ -82,5 +81,3 @@ user.o: user.c /usr/include/stdc-predef.h /usr/include/stdio.h \
 /usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
 user.h:
-
-search_criteria.h:

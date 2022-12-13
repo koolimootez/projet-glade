@@ -35,7 +35,6 @@ create_connexion (void)
   GtkWidget *mot_de_passe_entry;
   GtkWidget *label790;
   GtkWidget *identifiant_label;
-  GtkWidget *message_label;
   GtkWidget *mot_de_passe_label;
   GtkWidget *mot_de_passe_oublie_button_connexion_fenetre;
   GtkWidget *se_connecter_button;
@@ -44,6 +43,7 @@ create_connexion (void)
   GtkWidget *image218;
   GtkWidget *label793;
   GtkWidget *inscription_button_connexion_fenetre;
+  GtkWidget *message_label;
 
   connexion = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (connexion), _("connexion "));
@@ -73,11 +73,6 @@ create_connexion (void)
   gtk_widget_show (identifiant_label);
   gtk_fixed_put (GTK_FIXED (fixed72), identifiant_label, 0, 115);
   gtk_widget_set_size_request (identifiant_label, 102, 16);
-
-  message_label = gtk_label_new ("");
-  gtk_widget_show (message_label);
-  gtk_fixed_put (GTK_FIXED (fixed72), message_label, 8, 48);
-  gtk_widget_set_size_request (message_label, 440, 48);
 
   mot_de_passe_label = gtk_label_new (_("mot de passe  "));
   gtk_widget_show (mot_de_passe_label);
@@ -122,6 +117,11 @@ create_connexion (void)
   gtk_button_set_relief (GTK_BUTTON (inscription_button_connexion_fenetre), GTK_RELIEF_NONE);
   gtk_button_set_focus_on_click (GTK_BUTTON (inscription_button_connexion_fenetre), FALSE);
 
+  message_label = gtk_label_new ("");
+  gtk_widget_show (message_label);
+  gtk_fixed_put (GTK_FIXED (fixed72), message_label, 8, 48);
+  gtk_widget_set_size_request (message_label, 440, 48);
+
   g_signal_connect ((gpointer) mot_de_passe_oublie_button_connexion_fenetre, "clicked",
                     G_CALLBACK (on_mot_de_passe_oublie_button_connexion_fenetre_clicked),
                     NULL);
@@ -139,7 +139,6 @@ create_connexion (void)
   GLADE_HOOKUP_OBJECT (connexion, mot_de_passe_entry, "mot_de_passe_entry");
   GLADE_HOOKUP_OBJECT (connexion, label790, "label790");
   GLADE_HOOKUP_OBJECT (connexion, identifiant_label, "identifiant_label");
-  GLADE_HOOKUP_OBJECT (connexion, message_label, "message_label");
   GLADE_HOOKUP_OBJECT (connexion, mot_de_passe_label, "mot_de_passe_label");
   GLADE_HOOKUP_OBJECT (connexion, mot_de_passe_oublie_button_connexion_fenetre, "mot_de_passe_oublie_button_connexion_fenetre");
   GLADE_HOOKUP_OBJECT (connexion, se_connecter_button, "se_connecter_button");
@@ -148,6 +147,7 @@ create_connexion (void)
   GLADE_HOOKUP_OBJECT (connexion, image218, "image218");
   GLADE_HOOKUP_OBJECT (connexion, label793, "label793");
   GLADE_HOOKUP_OBJECT (connexion, inscription_button_connexion_fenetre, "inscription_button_connexion_fenetre");
+  GLADE_HOOKUP_OBJECT (connexion, message_label, "message_label");
 
   return connexion;
 }
@@ -2499,8 +2499,8 @@ create_gestion_utilisateur (void)
 
   treeview1 = gtk_tree_view_new ();
   gtk_widget_show (treeview1);
-  gtk_fixed_put (GTK_FIXED (fixed83), treeview1, 16, 248);
-  gtk_widget_set_size_request (treeview1, 816, 248);
+  gtk_fixed_put (GTK_FIXED (fixed83), treeview1, 40, 264);
+  gtk_widget_set_size_request (treeview1, 728, 200);
 
   label886 = gtk_label_new (_("Gestion des utilisateurs "));
   gtk_widget_show (label886);

@@ -1,8 +1,6 @@
 #ifndef USER_H_INCLUDED
 #define USER_H_INCLUDED
 
-#include "search_criteria.h"
-
 typedef struct 
 {
 char identifiant [20];
@@ -27,7 +25,7 @@ char * ajouter (User nouveau_user, char file_name[]);
 
 char * modifier(char * identifiant, User nouveau_user);
 
-User chercher(Search_criteria criterias []);
+User chercher(char * criterias_keys [], char * criterias_values [], int criterias_length);
 
 char * se_connecter(char identifiant [], char mot_de_passe []);
 
@@ -38,7 +36,7 @@ char *	reinitialiser_mot_de_passe(char identifiant [],
                                     char mot_de_passe [],
                                     char confirmer_mot_de_passe []);
 
-void getFieldValue(User u , char key [], char user_value []);
+void getFieldValue(User u , char * key [], char * user_value []);
 
 char * supprimer(char identifiant []);
 
