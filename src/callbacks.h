@@ -68,23 +68,49 @@ void
 on_connexion_button_mot_de_passe_oublie_clicked
                                         (GtkWidget *interface,
                                         gpointer         user_data);
+
 void
-on_Accueil_Gestion_des_utilisateurs_button_clicked
-                                        (GtkWidget *interface,
+on_se_deconnecter_button_accueil_fenetre_clicked
+                                        (GtkWidget * interface,
+                                        gpointer         user_data);
+
+
+void
+on_gestion_utilisateur_button_accueil_fenetre_clicked
+                                        (GtkWidget * interface,
                                         gpointer         user_data);
 
 void
-on_supprimer_utilisateur_gestion_utilisateur_button_clicked
-                                        (GtkWidget *interface,
-                                        gpointer         user_data);
+on_accueil_button_gestion_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data);
 
 void
-on_modifier_utilisateur_Gestion_des_utilisateurs_button_clicked
-                                        (GtkWidget *interface,
-                                        gpointer         user_data);
+on_modifier_utilisateur_button_gestion_des_utilisateurs_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data);
 
 void
-on_Ajout_utilisateur_Gestion_des_utilisateurs_button_clicked
-                                        (GtkWidget *interface,
-                                        gpointer         user_data);
+on_supprimer_utilisateur_button_gestion_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data);
 
+void
+on_ajout_utilisateur_button_gestion_des_utilisateurs_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data);
+
+void
+on_gestion_utilisateur_button_ajout_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data);
+
+void
+on_gestion_utilsateur_button_modifier_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data);
+
+void
+on_gestion_utilisateur_button_supprimer_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data);

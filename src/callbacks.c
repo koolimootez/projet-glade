@@ -135,6 +135,19 @@ on_se_connecter_button_clicked         (GtkWidget *interface,
 	char * message = se_connecter (identifiant, mot_de_passe);
 
 	label_set_value(interface, "message_label", message);
+
+	// attendre 2 secondes
+    sleep(2);
+
+	// redirection vers la page d'accueil apres 2 secondes d'attente
+	if(strcmp(message,  "Connexion avec succès !") == 0 ){
+	  GtkWidget * connexion_fenetre;
+      GtkWidget * accueil_fenetre;
+      connexion_fenetre = lookup_widget(interface, "connexion");
+      gtk_widget_hide (connexion_fenetre);
+      accueil_fenetre = create_accueil ();
+      gtk_widget_show (accueil_fenetre);
+	}
 		
 }
 void
@@ -523,6 +536,32 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
         char * message = modifier(identifiant, new_user);
 
         label_set_value(interface, "message_label", message);
+}
+
+void
+on_annuler_supprimer_utilisateur_button_clicked   (GtkWidget *interface,
+                                                   gpointer   user_data)
+{
+          GtkWidget * gestion_utilisateur_fenetre;
+          GtkWidget * supprimer_utilisateur_fenetre;
+          supprimer_utilisateur_fenetre = lookup_widget(interface, "supprimer_utilisateur");
+          gtk_widget_hide (supprimer_utilisateur_fenetre);
+          gestion_utilisateur_fenetre = create_gestion_utilisateur();
+          gtk_widget_show (gestion_utilisateur_fenetre);
+}
+
+void
+on_confirmer_supprimer_utilisateur_button_clicked    (GtkWidget *interface,
+                                                      gpointer   user_data)
+{
+          // Get identifiant
+          char identifiant [100];
+          entry_get_value(interface, "identifiant_entry", identifiant);
+
+          // Get message
+          char * message = supprimer(identifiant);
+
+          label_set_value(interface, "message_label", message);
 
 }
 
@@ -578,67 +617,129 @@ on_connexion_button_mot_de_passe_oublie_clicked
   gtk_widget_show (connexion_fenetre);
 }
 
-
 void
-on_annuler_supprimer_utilisateur_button_clicked   (GtkWidget *interface,
-                                                   gpointer   user_data)
-{
-
-
-}
-
-
-void
-on_confirmer_supprimer_utilisateur_button_clicked    (GtkWidget *interface,
-                                                      gpointer   user_data)
-{
-          // Get identifiant
-          char identifiant [100];
-          entry_get_value(interface, "identifiant_entry", identifiant);
-
-          // Get message
-          char * message = supprimer(identifiant);
-
-          label_set_value(interface, "message_label", message);
-
-}
-
-
-
-
-void
-on_Accueil_Gestion_des_utilisateurs_button_clicked
+on_se_deconnecter_button_accueil_fenetre_clicked
                                         (GtkWidget *interface,
                                         gpointer         user_data)
 {
-
-
-}
-
-
-void
-on_supprimer_utilisateur_gestion_utilisateur_button_clicked
-                                        (GtkWidget *interface,
-                                        gpointer         user_data)
-{
+  GtkWidget * connexion_fenetre;
+  GtkWidget * accueil_fenetre;
+  accueil_fenetre = lookup_widget(interface, "accueil");
+  gtk_widget_hide (accueil_fenetre);
+  connexion_fenetre = create_connexion ();
+  gtk_widget_show (connexion_fenetre);
 
 }
 
 
 void
-on_modifier_utilisateur_Gestion_des_utilisateurs_button_clicked
-                                        (GtkWidget *interface,
+on_gestion_utilisateur_button_accueil_fenetre_clicked
+                                        (GtkWidget * interface,
                                         gpointer         user_data)
 {
-
+  GtkWidget * gestion_utilisateur_fenetre;
+  GtkWidget * accueil_fenetre;
+  accueil_fenetre = lookup_widget(interface, "accueil");
+  gtk_widget_hide (accueil_fenetre);
+  gestion_utilisateur_fenetre = create_gestion_utilisateur();
+  gtk_widget_show (gestion_utilisateur_fenetre);
 }
 
 
 void
-on_Ajout_utilisateur_Gestion_des_utilisateurs_button_clicked
-                                        (GtkWidget *interface,
-                                        gpointer         user_data)
+on_accueil_button_gestion_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data)
 {
+      GtkWidget * gestion_utilisateur_fenetre;
+      GtkWidget * accueil_fenetre;
+      gestion_utilisateur_fenetre = lookup_widget(interface, "gestion_utilisateur");
+      gtk_widget_hide (gestion_utilisateur_fenetre);
+      accueil_fenetre = create_accueil ();
+      gtk_widget_show (accueil_fenetre);
+}
 
+
+void
+on_modifier_utilisateur_button_gestion_des_utilisateurs_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data)
+{
+      GtkWidget * gestion_utilisateur_fenetre;
+      GtkWidget * modification_utilisateur_fenetre;
+      gestion_utilisateur_fenetre = lookup_widget(interface, "gestion_utilisateur");
+      gtk_widget_hide (gestion_utilisateur_fenetre);
+      modification_utilisateur_fenetre = create_modification_utlisateur ();
+      gtk_widget_show (modification_utilisateur_fenetre);
+}
+
+
+void
+on_supprimer_utilisateur_button_gestion_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data)
+{
+      GtkWidget * gestion_utilisateur_fenetre;
+      GtkWidget * supprimer_utilisateur_fenetre;
+      gestion_utilisateur_fenetre = lookup_widget(interface, "gestion_utilisateur");
+      gtk_widget_hide (gestion_utilisateur_fenetre);
+      supprimer_utilisateur_fenetre = create_supprimer_utilisateur ();
+      gtk_widget_show (supprimer_utilisateur_fenetre);
+}
+
+
+void
+on_ajout_utilisateur_button_gestion_des_utilisateurs_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data)
+{
+        GtkWidget * gestion_utilisateur_fenetre;
+        GtkWidget * ajout_utilisateur_fenetre;
+        gestion_utilisateur_fenetre = lookup_widget(interface, "gestion_utilisateur");
+        gtk_widget_hide (gestion_utilisateur_fenetre);
+        ajout_utilisateur_fenetre = create_ajout_utilisateur ();
+        gtk_widget_show (ajout_utilisateur_fenetre);
+}
+
+
+void
+on_gestion_utilisateur_button_ajout_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data)
+{
+      GtkWidget * gestion_utilisateur_fenetre;
+      GtkWidget * ajout_utilisateur_fenetre;
+      ajout_utilisateur_fenetre = lookup_widget(interface, "ajout_utilisateur");
+      gtk_widget_hide (ajout_utilisateur_fenetre);
+      gestion_utilisateur_fenetre = create_gestion_utilisateur ();
+      gtk_widget_show (gestion_utilisateur_fenetre);
+}
+
+
+void
+on_gestion_utilsateur_button_modifier_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data)
+{
+      GtkWidget * gestion_utilisateur_fenetre;
+      GtkWidget * modification_utilisateur_fenetre;
+      modification_utilisateur_fenetre = lookup_widget(interface, "modification_utlisateur");
+      gtk_widget_hide (modification_utilisateur_fenetre);
+      gestion_utilisateur_fenetre = create_gestion_utilisateur ();
+      gtk_widget_show (gestion_utilisateur_fenetre);
+}
+
+
+void
+on_gestion_utilisateur_button_supprimer_utilisateur_fenetre_clicked
+                                        (GtkWidget * interface,
+                                         gpointer         user_data)
+{
+      GtkWidget * gestion_utilisateur_fenetre;
+      GtkWidget * supprimer_utilisateur_fenetre;
+      supprimer_utilisateur_fenetre = lookup_widget(interface, "supprimer_utilisateur");
+      gtk_widget_hide (supprimer_utilisateur_fenetre);
+      gestion_utilisateur_fenetre = create_gestion_utilisateur ();
+      gtk_widget_show (gestion_utilisateur_fenetre);
 }
 

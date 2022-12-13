@@ -80,20 +80,20 @@ main (int argc, char *argv[])
 
     mot_de_passe_oublie = create_mot_de_passe_oublie ();
 
+    accueil = create_accueil ();
+
     Mes_informations_ = create_Mes_informations_ ();
     // gtk_widget_show (Mes_informations_);
 
     ajout_utilisateur = create_ajout_utilisateur ();
     // gtk_widget_show (ajout_utilisateur);
 
-     modification_utlisateur_ = create_modification_utlisateur_ ();
+     modification_utlisateur_ = create_modification_utlisateur ();
      // gtk_widget_show (modification_utlisateur_);
 
-     supprimer_utilisateur_ = create_supprimer_utilisateur_ ();
+     supprimer_utilisateur_ = create_supprimer_utilisateur ();
      // gtk_widget_show (supprimer_utilisateur_);
 
-    accueil = create_accueil ();
-    // gtk_widget_show (accueil);
     gestion_des_elections_ = create_gestion_des_elections_ ();
     // gtk_widget_show (gestion_des_elections_);
     ajout_election_ = create_ajout_election_ ();
