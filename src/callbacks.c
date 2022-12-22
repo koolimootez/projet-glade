@@ -106,10 +106,10 @@ on_sincrire_button_clicked             (GtkWidget *interface,
     strcpy(user_to_add.gouvernorat , gouvernorat);
     strcpy(user_to_add.email , email);
     strcpy(user_to_add.mot_de_passe , mot_de_passe);
-    strcpy(user_to_add.bureau_de_vote , "");
+    strcpy(user_to_add.bureau_de_vote , " ");
     strcpy(user_to_add.role , "electeur");
-    strcpy(user_to_add.profession , "");
-    strcpy(user_to_add.liste_electorale , "");
+    strcpy(user_to_add.profession , " ");
+    strcpy(user_to_add.liste_electorale , " ");
 
 	char * message = sinscrire(user_to_add);
 
@@ -271,10 +271,7 @@ void on_mes_informations_sauvgarder_button_clicked
 
 
         //get message
-        char * criterias_keys[] =  { "identifiant"};
-        char * criterias_values[] = { identifiant };
-
-        User old_user = chercher(criterias_keys, criterias_values, 1);
+        User old_user = chercherParIdentifiant(identifiant, "users.txt");
 
         User new_user;
         strcpy(new_user.identifiant , old_user.identifiant);
@@ -510,32 +507,34 @@ on_modifier_utilisateur_sauvegarder_button_clicked  (GtkWidget *interface,
         combo_box_get_value(interface, "liste_electorale_entry", liste_electorale);
 
         // Get message
-         char * criterias_keys[] =  { "identifiant"};
-         char * criterias_values[] = { identifiant };
 
-        User old_user = chercher(criterias_keys, criterias_values, 1);
+         User old_user = chercherParIdentifiant(identifiant, "users.txt");
+           if(strcmp(old_user.identifiant, "-1") == 0){
+              char * message = "Aucun utlisateur ne correspond pas \n aux identifiant et date de naissance saisies !";
+              label_set_value(interface, "message_label", message);
+          }else{
+              User new_user ;
+              strcpy(new_user.identifiant , identifiant);
+              strcpy(new_user.nom , nom);
+              strcpy(new_user.prenom , prenom);
+              strcpy(new_user.date_de_naissance , date_de_naissance);
+              strcpy(new_user.lieu_de_naissance , lieu_de_naissance);
+              strcpy(new_user.genre , genre);
+              strcpy(new_user.statut_social , statut_social);
+              strcpy(new_user.addresse , addresse);
+              strcpy(new_user.code_postal , code_postal);
+              strcpy(new_user.gouvernorat , gouvernorat);
+              strcpy(new_user.email , email);
+              strcpy(new_user.mot_de_passe , old_user.mot_de_passe);
+              strcpy(new_user.bureau_de_vote, bureau_de_vote);
+              strcpy(new_user.role , role);
+              strcpy(new_user.profession , profession);
+              strcpy(new_user.liste_electorale , liste_electorale);
 
-        User new_user ;
-        strcpy(new_user.identifiant , identifiant);
-        strcpy(new_user.nom , nom);
-        strcpy(new_user.prenom , prenom);
-        strcpy(new_user.date_de_naissance , date_de_naissance);
-        strcpy(new_user.lieu_de_naissance , lieu_de_naissance);
-        strcpy(new_user.genre , genre);
-        strcpy(new_user.statut_social , statut_social);
-        strcpy(new_user.addresse , addresse);
-        strcpy(new_user.code_postal , code_postal);
-        strcpy(new_user.gouvernorat , gouvernorat);
-        strcpy(new_user.email , email);
-        strcpy(new_user.mot_de_passe , old_user.mot_de_passe);
-        strcpy(new_user.bureau_de_vote, bureau_de_vote);
-        strcpy(new_user.role , role);
-        strcpy(new_user.profession , profession);
-        strcpy(new_user.liste_electorale , liste_electorale);
+              char * message = modifier(identifiant, new_user);
+              label_set_value(interface, "message_label", message);
+          }
 
-        char * message = modifier(identifiant, new_user);
-
-        label_set_value(interface, "message_label", message);
 }
 
 void
